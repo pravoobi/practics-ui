@@ -23,7 +23,16 @@ import { defineConfig } from "vite";
         fileName: (format) => `index.${format === "es" ? "js" : "cjs"}`,
       },
       rollupOptions: {
-        external: ["react", "react-dom", "react/jsx-runtime"],
+        external: [
+          "react",
+          "react-dom",
+          "react/jsx-runtime",
+          /^@radix-ui\//,
+          "class-variance-authority",
+          "clsx",
+          "lucide-react",
+          "tailwind-merge",
+        ],
         output: {
           globals: {
             react: "React",
