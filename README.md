@@ -1,144 +1,118 @@
 # @practics/ui
 
-  A React component library built with Tailwind CSS and Radix UI primitives.
+A React component library built with Tailwind CSS and Radix UI primitives.
 
-  ## Installation
+## Installation
 
-  ```bash
-  npm install @practics/ui
+```bash
+npm install @practics/ui
+```
 
-  Setup
+## Setup
 
-  Import the styles in your app's entry file:
+Import the styles in your app's entry file:
 
-  import "@practics/ui/styles";
+```tsx
+import "@practics/ui/styles";
+```
 
-  Make sure your project has Tailwind CSS configured. The components use Tailwind classes and rely on your Tailwind setup for styling.
+Make sure your project has Tailwind CSS configured. The components use Tailwind classes and rely on your Tailwind setup for styling.
 
-  Usage
+## Usage
 
-  import { Button, Badge, Toast } from "@practics/ui";
+```tsx
+import { Button, Badge, Toaster } from "@practics/ui";
 
-  export default function App() {
-    return (
-      <div>
-        <Button variant="default">Click me</Button>
-        <Badge variant="success">Active</Badge>
-      </div>
-    );
-  }
+export default function App() {
+  return (
+    <div>
+      <Button variant="default">Click me</Button>
+      <Badge variant="success">Active</Badge>
+      <Toaster position="bottom-right" />
+    </div>
+  );
+}
+```
 
-  Components
+## Preview
 
-  Layout
+### Buttons & Badges
+![Button](.github/assets/button.png)
+![Badge](.github/assets/badge.png)
 
-  ┌───────────┬───────────────────────────────────────────────────────┐
-  │ Component │                      Description                      │
-  ├───────────┼───────────────────────────────────────────────────────┤
-  │ Box       │ Base layout primitive with padding and display props  │
-  ├───────────┼───────────────────────────────────────────────────────┤
-  │ Stack     │ Flex container with direction, gap, align and justify │
-  ├───────────┼───────────────────────────────────────────────────────┤
-  │ Grid      │ CSS grid container                                    │
-  ├───────────┼───────────────────────────────────────────────────────┤
-  │ Container │ Max-width centered container                          │
-  └───────────┴───────────────────────────────────────────────────────┘
+### Alerts
+![Alert](.github/assets/alert.png)
 
-  Inputs
+### Card & Table
+![Card](.github/assets/card.png)
+![Table](.github/assets/table.png)
 
-  ┌───────────┬───────────────────────────────────────────────────────────┐
-  │ Component │                        Description                        │
-  ├───────────┼───────────────────────────────────────────────────────────┤
-  │ Button    │ Button with default, outline, ghost, destructive variants │
-  ├───────────┼───────────────────────────────────────────────────────────┤
-  │ Input     │ Text input field                                          │
-  ├───────────┼───────────────────────────────────────────────────────────┤
-  │ Textarea  │ Multi-line text input                                     │
-  ├───────────┼───────────────────────────────────────────────────────────┤
-  │ Checkbox  │ Checkbox with label support                               │
-  ├───────────┼───────────────────────────────────────────────────────────┤
-  │ Select    │ Dropdown select with option groups                        │
-  └───────────┴───────────────────────────────────────────────────────────┘
+### Navigation
+![Sidebar](.github/assets/sidebar.png)
+![Tabs](.github/assets/tabs.png)
 
-  Display
+## Components
 
-  ┌───────────┬──────────────────────────────────────────────────────────────────────┐
-  │ Component │                             Description                              │
-  ├───────────┼──────────────────────────────────────────────────────────────────────┤
-  │ Badge     │ Small label with success, warning, destructive variants              │
-  ├───────────┼──────────────────────────────────────────────────────────────────────┤
-  │ Alert     │ Contextual message with info, success, warning, destructive variants │
-  ├───────────┼──────────────────────────────────────────────────────────────────────┤
-  │ Avatar    │ User avatar with image and fallback initials                         │
-  ├───────────┼──────────────────────────────────────────────────────────────────────┤
-  │ Card      │ Content card with header, body and footer                            │
-  ├───────────┼──────────────────────────────────────────────────────────────────────┤
-  │ StatCard  │ Metric card with trend indicator                                     │
-  ├───────────┼──────────────────────────────────────────────────────────────────────┤
-  │ Progress  │ Progress bar with size and variant options                           │
-  └───────────┴──────────────────────────────────────────────────────────────────────┘
+### Layout
+| Component | Description |
+|---|---|
+| `Box` | Base layout primitive with padding and display props |
+| `Stack` | Flex container with direction, gap, align and justify |
+| `Grid` | CSS grid container |
+| `Container` | Max-width centered container |
 
-  Navigation
+### Inputs
+| Component | Description |
+|---|---|
+| `Button` | Button with default, outline, ghost, destructive variants |
+| `Input` | Text input field |
+| `Textarea` | Multi-line text input |
+| `Checkbox` | Checkbox with label support |
+| `Select` | Dropdown select with option groups |
 
-  ┌────────────┬───────────────────────────────────────────────┐
-  │ Component  │                  Description                  │
-  ├────────────┼───────────────────────────────────────────────┤
-  │ Breadcrumb │ Breadcrumb trail with mobile collapse support │
-  ├────────────┼───────────────────────────────────────────────┤
-  │ Tabs       │ Tab navigation with mobile scroll support     │
-  ├────────────┼───────────────────────────────────────────────┤
-  │ Sidebar    │ App sidebar with mobile drawer support        │
-  └────────────┴───────────────────────────────────────────────┘
+### Display
+| Component | Description |
+|---|---|
+| `Badge` | Small label with success, warning, destructive variants |
+| `Alert` | Contextual message with info, success, warning, destructive variants |
+| `Avatar` | User avatar with image and fallback initials |
+| `Card` | Content card with header, body and footer |
+| `StatCard` | Metric card with trend indicator |
+| `Progress` | Progress bar with size and variant options |
 
-  Overlays
+### Navigation
+| Component | Description |
+|---|---|
+| `Breadcrumb` | Breadcrumb trail with mobile collapse support |
+| `Tabs` | Tab navigation with mobile scroll support |
+| `Sidebar` | App sidebar with mobile drawer support |
 
-  ┌─────────────────┬───────────────────────────────────────────────────────┐
-  │    Component    │                      Description                      │
-  ├─────────────────┼───────────────────────────────────────────────────────┤
-  │ Dialog          │ Modal dialog                                          │
-  ├─────────────────┼───────────────────────────────────────────────────────┤
-  │ Toast / Toaster │ Toast notifications with position and variant support │
-  └─────────────────┴───────────────────────────────────────────────────────┘
+### Overlays
+| Component | Description |
+|---|---|
+| `Dialog` | Modal dialog |
+| `Toast` / `Toaster` | Toast notifications with position and variant support |
 
-  Data
+### Data
+| Component | Description |
+|---|---|
+| `Table` | Static data table |
+| `DataTable` | Sortable data table powered by TanStack Table |
 
-  ┌───────────┬───────────────────────────────────────────────┐
-  │ Component │                  Description                  │
-  ├───────────┼───────────────────────────────────────────────┤
-  │ Table     │ Static data table                             │
-  ├───────────┼───────────────────────────────────────────────┤
-  │ DataTable │ Sortable data table powered by TanStack Table │
-  └───────────┴───────────────────────────────────────────────┘
+## Storybook
 
-  Peer Dependencies
+Browse all components and their props live:
+**[https://pravoobi.github.io/practics-ui](https://pravoobi.github.io/practics-ui)**
 
-  {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
-  }
+## Peer Dependencies
 
-  ## Storybook
+```json
+{
+  "react": "^18.0.0",
+  "react-dom": "^18.0.0"
+}
+```
 
-  Browse all components and their props live:
-  **[https://pravoobi.github.io/practics-ui](https://pravoobi.github.io/practics-ui)**
+## License
 
-    ## Preview
-
-  ### Buttons & Badges
-  ![Button](https://raw.githubusercontent.com/pravoobi/practics-ui/master/.github/assets/button.png)
-  ![Badge](https://raw.githubusercontent.com/pravoobi/practics-ui/master/.github/assets/badge.png)
-
-  ### Alerts
-  ![Alert](https://raw.githubusercontent.com/pravoobi/practics-ui/master/.github/assets/alert.png)
-
-  ### Card & Table
-  ![Card](https://raw.githubusercontent.com/pravoobi/practics-ui/master/.github/assets/card.png)
-  ![Table](https://raw.githubusercontent.com/pravoobi/practics-ui/master/.github/assets/table.png)
-
-  ### Navigation
-  ![Sidebar](https://raw.githubusercontent.com/pravoobi/practics-ui/master/.github/assets/sidebar.png)
-  ![Tabs](https://raw.githubusercontent.com/pravoobi/practics-ui/master/.github/assets/tabs.png)
-
-  License
-
-  ISC
+ISC
