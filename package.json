@@ -1,8 +1,7 @@
 {
   "name": "@practics/ui",
   "version": "0.0.1",
-  "description": "",
-  "private": true,
+  "description": "Practics UI component library built with React, Tailwind CSS and Radix UI",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -14,8 +13,11 @@
     },
     "./styles": "./dist/styles/globals.css"
   },
-  "keywords": [],
-  "author": "",
+  "files": [
+      "dist"
+    ],
+  "keywords": ["react", "ui", "components", "tailwind", "radix"],
+  "author": "pravoobi",
   "license": "ISC",
   "scripts": {
     "build:lib": "tsc -p tsconfig.build.json && vite build",
