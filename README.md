@@ -117,6 +117,28 @@
     "react-dom": "^18.0.0"
   }
 
+  ## Storybook
+
+  Browse all components and their props live:
+  **[https://pravoobi.github.io/practics-ui](https://pravoobi.github.io/practics-ui)**
+
+    ## Preview
+
+  ### Buttons & Badges
+  ![Button](https://raw.githubusercontent.com/pravoobi/practics-ui/master/.github/assets/button.png)
+  ![Badge](https://raw.githubusercontent.com/pravoobi/practics-ui/master/.github/assets/badge.png)
+
+  ### Alerts
+  ![Alert](https://raw.githubusercontent.com/pravoobi/practics-ui/master/.github/assets/alert.png)
+
+  ### Card & Table
+  ![Card](https://raw.githubusercontent.com/pravoobi/practics-ui/master/.github/assets/card.png)
+  ![Table](https://raw.githubusercontent.com/pravoobi/practics-ui/master/.github/assets/table.png)
+
+  ### Navigation
+  ![Sidebar](https://raw.githubusercontent.com/pravoobi/practics-ui/master/.github/assets/sidebar.png)
+  ![Tabs](https://raw.githubusercontent.com/pravoobi/practics-ui/master/.github/assets/tabs.png)
+
   License
 
   ISC
