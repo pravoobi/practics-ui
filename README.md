@@ -51,6 +51,9 @@ export default function App() {
 ![Sidebar](.github/assets/sidebar.png)
 ![Tabs](.github/assets/tabs.png)
 
+### Toast
+![Toast](.github/assets/toast.png)
+
 ## Components
 
 ### Layout
