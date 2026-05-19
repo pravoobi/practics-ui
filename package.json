@@ -1,6 +1,6 @@
 {
   "name": "@practics/ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Practics UI component library built with React, Tailwind CSS and Radix UI",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
