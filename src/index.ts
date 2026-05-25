@@ -160,3 +160,18 @@ export type {
 
 export { Table, DataTable } from "./components/Table";
 export type { TableProps, DataTableProps, ColumnDef } from "./components/Table";
+
+export { DonutChart } from "./components/DonutChart";
+export type { DonutChartProps, DonutSegment } from "./components/DonutChart";
+
+export { AreaChart } from "./components/AreaChart";
+export type { AreaChartProps, AreaSeries, DataPoint } from "./components/AreaChart";
+
+export { EmptyState } from "./components/EmptyState";
+export type { EmptyStateProps, EmptyStateAction } from "./components/EmptyState";
+
+export { ConfirmDialog } from "./components/ConfirmDialog";
+export type { ConfirmDialogProps, ConfirmDialogVariant } from "./components/ConfirmDialog";
+
+export { PageHeader } from "./components/PageHeader";
+export type { PageHeaderProps, PageHeaderAction } from "./components/PageHeader";
