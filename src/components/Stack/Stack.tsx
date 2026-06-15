@@ -38,19 +38,13 @@ import * as React from "react";
     evenly: "justify-evenly",
   };
 
-  const Stack = React.forwardRef<HTMLElement, StackProps>(
-    (
-      {
-        direction = "row",
+  const Stack = ({ ref, direction = "row",
         gap,
         align,
         justify,
         wrap,
         className,
-        ...props
-      },
-      ref
-    ) => {
+        ...props }: StackProps & { ref?: React.Ref<HTMLElement> }) => {
       return (
         <Box
           ref={ref}
@@ -66,8 +60,7 @@ import * as React from "react";
           {...props}
         />
       );
-    }
-  );
+    };
 
   Stack.displayName = "Stack";
 

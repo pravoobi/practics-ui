@@ -23,41 +23,31 @@ const variantMap: Record<string, string> = {
   ghost: "border-transparent shadow-none bg-transparent",
 };
 
-const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({ variant = "default", className, ...props }, ref) => (
+const Card = ({ ref, variant = "default", className, ...props }: CardProps & { ref?: React.Ref<HTMLDivElement> }) => (
     <CardPrimitive
       ref={ref}
       className={cn(variantMap[variant], className)}
       {...props}
     />
-  ),
-);
+  );
 Card.displayName = "Card";
 
-const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
-  ({ className, ...props }, ref) => (
+const CardHeader = ({ ref, className, ...props }: CardHeaderProps & { ref?: React.Ref<HTMLDivElement> }) => (
     <CardHeaderPrimitive ref={ref} className={className} {...props} />
-  ),
-);
+  );
 CardHeader.displayName = "CardHeader";
 
-const CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(
-  ({ className, ...props }, ref) => (
+const CardTitle = ({ ref, className, ...props }: CardTitleProps & { ref?: React.Ref<HTMLHeadingElement> }) => (
     <CardTitlePrimitive ref={ref} className={className} {...props} />
-  ),
-);
+  );
 CardTitle.displayName = "CardTitle";
 
-const CardDescription = React.forwardRef<
-  HTMLParagraphElement,
-  CardDescriptionProps
->(({ className, ...props }, ref) => (
+const CardDescription = ({ ref, className, ...props }: CardDescriptionProps & { ref?: React.Ref<HTMLParagraphElement> }) => (
   <CardDescriptionPrimitive ref={ref} className={className} {...props} />
-));
+);
 CardDescription.displayName = "CardDescription";
 
-const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
-  ({ padding, className, ...props }, ref) => {
+const CardContent = ({ ref, padding, className, ...props }: CardContentProps & { ref?: React.Ref<HTMLDivElement> }) => {
     const paddingClass = padding !== undefined ? `p-${padding}` : undefined;
     return (
       <CardContentPrimitive
@@ -66,15 +56,12 @@ const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
         {...props}
       />
     );
-  },
-);
+  };
 CardContent.displayName = "CardContent";
 
-const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
-  ({ className, ...props }, ref) => (
+const CardFooter = ({ ref, className, ...props }: CardFooterProps & { ref?: React.Ref<HTMLDivElement> }) => (
     <CardFooterPrimitive ref={ref} className={className} {...props} />
-  ),
-);
+  );
 CardFooter.displayName = "CardFooter";
 
 export {

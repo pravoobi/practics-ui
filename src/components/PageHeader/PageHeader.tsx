@@ -3,8 +3,7 @@ import { Button } from "@/components/Button";
 import { cn } from "@/lib/utils";
 import type { PageHeaderProps } from "./PageHeader.types";
 
-const PageHeader = React.forwardRef<HTMLDivElement, PageHeaderProps>(
-  ({ eyebrow, title, action, className, ...props }, ref) => (
+const PageHeader = ({ ref, eyebrow, title, action, className, ...props }: PageHeaderProps & { ref?: React.Ref<HTMLDivElement> }) => (
     <div
       ref={ref}
       className={cn("flex items-start justify-between gap-4", className)}
@@ -24,8 +23,7 @@ const PageHeader = React.forwardRef<HTMLDivElement, PageHeaderProps>(
         </Button>
       )}
     </div>
-  )
-);
+  );
 
 PageHeader.displayName = "PageHeader";
 

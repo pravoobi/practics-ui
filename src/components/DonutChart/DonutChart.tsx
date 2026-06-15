@@ -2,10 +2,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import type { DonutChartProps } from "./DonutChart.types";
 
-const DonutChart = React.forwardRef<HTMLDivElement, DonutChartProps>(
-  (
-    {
-      segments,
+const DonutChart = ({ ref, segments,
       centerText,
       centerSubtext,
       size = 160,
@@ -13,10 +10,7 @@ const DonutChart = React.forwardRef<HTMLDivElement, DonutChartProps>(
       gap = 2,
       showLegend = false,
       className,
-      ...props
-    },
-    ref
-  ) => {
+      ...props }: DonutChartProps & { ref?: React.Ref<HTMLDivElement> }) => {
     const r = (size - strokeWidth) / 2;
     const circumference = 2 * Math.PI * r;
     const cx = size / 2;
@@ -117,8 +111,7 @@ const DonutChart = React.forwardRef<HTMLDivElement, DonutChartProps>(
         )}
       </div>
     );
-  }
-);
+  };
 
 DonutChart.displayName = "DonutChart";
 

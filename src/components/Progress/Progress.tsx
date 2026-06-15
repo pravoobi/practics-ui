@@ -16,19 +16,13 @@ import * as React from "react";
     lg: "h-4",
   };
 
-  const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
-    (
-      {
-        value = 0,
+  const Progress = ({ ref, value = 0,
         variant = "default",
         size = "md",
         label,
         showValue = false,
         className,
-        ...props
-      },
-      ref
-    ) => (
+        ...props }: ProgressProps & { ref?: React.Ref<HTMLDivElement> }) => (
       <div className="w-full">
         {(label || showValue) && (
           <div className="flex justify-between items-center mb-1">
@@ -48,8 +42,7 @@ import * as React from "react";
           {...props}
         />
       </div>
-    )
-  );
+    );
   Progress.displayName = "Progress";
 
   export { Progress };

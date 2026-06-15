@@ -11,19 +11,13 @@ function formatValue(v: number): string {
   return String(Math.round(v));
 }
 
-const AreaChart = React.forwardRef<HTMLDivElement, AreaChartProps>(
-  (
-    {
-      data,
+const AreaChart = ({ ref, data,
       series,
       height = 220,
       showGrid = true,
       showLegend = true,
       className,
-      ...props
-    },
-    ref
-  ) => {
+      ...props }: AreaChartProps & { ref?: React.Ref<HTMLDivElement> }) => {
     const uid = React.useId().replace(/:/g, "");
     const chartW = INTERNAL_WIDTH - PADDING.left - PADDING.right;
     const chartH = height - PADDING.top - PADDING.bottom;
@@ -156,8 +150,7 @@ const AreaChart = React.forwardRef<HTMLDivElement, AreaChartProps>(
         </svg>
       </div>
     );
-  }
-);
+  };
 
 AreaChart.displayName = "AreaChart";
 

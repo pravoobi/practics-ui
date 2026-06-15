@@ -1,4 +1,4 @@
- import * as React from "react";
+import * as React from "react";
   import { Slot } from "@radix-ui/react-slot";
   import {
     Sidebar as SidebarPrimitive,
@@ -22,36 +22,27 @@
     NavGroupConfig,
   } from "./Sidebar.types";
 
-  const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>(
-    ({ className, isOpen, onClose, ...props }, ref) => (
+  const Sidebar = ({ ref, className, isOpen, onClose, ...props }: SidebarProps & { ref?: React.Ref<HTMLDivElement> }) => (
       <SidebarPrimitive ref={ref} className={className} isOpen={isOpen} onClose={onClose} {...props} />
-    )
-  );
+    );
   Sidebar.displayName = "Sidebar";
 
-  const SidebarHeader = React.forwardRef<HTMLDivElement, SidebarHeaderProps>(
-    ({ className, ...props }, ref) => (
+  const SidebarHeader = ({ ref, className, ...props }: SidebarHeaderProps & { ref?: React.Ref<HTMLDivElement> }) => (
       <SidebarHeaderPrimitive ref={ref} className={className} {...props} />
-    )
-  );
+    );
   SidebarHeader.displayName = "SidebarHeader";
 
-  const SidebarContent = React.forwardRef<HTMLDivElement, SidebarContentProps>(
-    ({ className, ...props }, ref) => (
+  const SidebarContent = ({ ref, className, ...props }: SidebarContentProps & { ref?: React.Ref<HTMLDivElement> }) => (
       <SidebarContentPrimitive ref={ref} className={className} {...props} />
-    )
-  );
+    );
   SidebarContent.displayName = "SidebarContent";
 
-  const SidebarFooter = React.forwardRef<HTMLDivElement, SidebarFooterProps>(
-    ({ className, ...props }, ref) => (
+  const SidebarFooter = ({ ref, className, ...props }: SidebarFooterProps & { ref?: React.Ref<HTMLDivElement> }) => (
       <SidebarFooterPrimitive ref={ref} className={className} {...props} />
-    )
-  );
+    );
   SidebarFooter.displayName = "SidebarFooter";
 
-  const NavItem = React.forwardRef<HTMLAnchorElement, NavItemProps>(
-    ({ icon, badge, isActive, disabled, asChild, className, children, ...props }, ref) => {
+  const NavItem = ({ ref, icon, badge, isActive, disabled, asChild, className, children, ...props }: NavItemProps & { ref?: React.Ref<HTMLAnchorElement> }) => {
       const Comp = asChild ? Slot : SidebarNavItemPrimitive;
       return (
         <Comp
@@ -69,8 +60,7 @@
           )}
         </Comp>
       );
-    }
-  );
+    };
   NavItem.displayName = "NavItem";
 
   const NavGroup = ({ group, className }: NavGroupProps) => (

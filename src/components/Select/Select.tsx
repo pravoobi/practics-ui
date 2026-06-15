@@ -64,25 +64,19 @@ import * as React from "react";
   );
   Select.displayName = "Select";
 
-  const SelectTrigger = React.forwardRef<HTMLButtonElement, SelectTriggerProps>(
-    ({ className, ...props }, ref) => (
+  const SelectTrigger = ({ ref, className, ...props }: SelectTriggerProps & { ref?: React.Ref<HTMLButtonElement> }) => (
       <SelectTriggerPrimitive ref={ref} className={className} {...props} />
-    )
-  );
+    );
   SelectTrigger.displayName = "SelectTrigger";
 
-  const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
-    ({ className, ...props }, ref) => (
+  const SelectItem = ({ ref, className, ...props }: SelectItemProps & { ref?: React.Ref<HTMLDivElement> }) => (
       <SelectItemPrimitive ref={ref} className={className} {...props} />
-    )
-  );
+    );
   SelectItem.displayName = "SelectItem";
 
-  const SelectContent = React.forwardRef<HTMLDivElement, SelectContentProps>(
-    ({ className, ...props }, ref) => (
+  const SelectContent = ({ ref, className, ...props }: SelectContentProps & { ref?: React.Ref<HTMLDivElement> }) => (
       <SelectContentPrimitive ref={ref} className={className} {...props} />
-    )
-  );
+    );
   SelectContent.displayName = "SelectContent";
 
   export {

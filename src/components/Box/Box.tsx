@@ -1,4 +1,4 @@
- import * as React from "react";
+import * as React from "react";
   import { cn } from "@/lib/utils";
   import type { BoxProps, SpacingScale, DisplayValue } from "./Box.types";
 
@@ -41,10 +41,7 @@
     hidden: "hidden",
   };
 
-  const Box = React.forwardRef<HTMLElement, BoxProps>(
-    (
-      {
-        as: Component = "div",
+  const Box = ({ ref, as: Component = "div",
         padding,
         paddingX,
         paddingY,
@@ -53,10 +50,7 @@
         marginY,
         display,
         className,
-        ...props
-      },
-      ref
-    ) => {
+        ...props }: BoxProps & { ref?: React.Ref<HTMLElement> }) => {
       return (
         <Component
           ref={ref}
@@ -73,8 +67,7 @@
           {...props}
         />
       );
-    }
-  );
+    };
 
   Box.displayName = "Box";
 

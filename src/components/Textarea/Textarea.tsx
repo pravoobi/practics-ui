@@ -1,10 +1,9 @@
- import * as React from "react";
+import * as React from "react";
   import { cn } from "@/lib/utils";
   import { Textarea as BaseTextarea } from "@/components/ui/textarea";
   import type { TextareaProps } from "./Textarea.types";
 
-  const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-    ({ label, error, helperText, className, id, ...props }, ref) => {
+  const Textarea = ({ ref, label, error, helperText, className, id, ...props }: TextareaProps & { ref?: React.Ref<HTMLTextAreaElement> }) => {
       const textareaId = id ?? React.useId();
       const helperId = `${textareaId}-helper`;
       const errorId = `${textareaId}-error`;
@@ -44,8 +43,7 @@
           )}
         </div>
       );
-    }
-  );
+    };
 
   Textarea.displayName = "Textarea";
 

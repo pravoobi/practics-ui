@@ -1,4 +1,4 @@
- import * as React from "react";
+import * as React from "react";
   import { Badge as BadgePrimitive } from "@/components/ui/badge";
   import { cn } from "@/lib/utils";
   import type { BadgeProps } from "./Badge.types";
@@ -8,8 +8,7 @@
     warning: "border-transparent bg-yellow-500 text-white",
   };
 
-  const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
-    ({ variant = "default", className, ...props }, ref) => {
+  const Badge = ({ ref, variant = "default", className, ...props }: BadgeProps & { ref?: React.Ref<HTMLDivElement> }) => {
       const isExtra = variant === "success" || variant === "warning";
 
       if (isExtra) {
@@ -31,8 +30,7 @@
           {...props}
         />
       );
-    }
-  );
+    };
 
   Badge.displayName = "Badge";
 

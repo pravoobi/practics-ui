@@ -62,25 +62,19 @@ import * as React from "react";
   };
   Tabs.displayName = "Tabs";
 
-  const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
-    ({ className, ...props }, ref) => (
+  const TabsList = ({ ref, className, ...props }: TabsListProps & { ref?: React.Ref<HTMLDivElement> }) => (
       <TabsListPrimitive ref={ref} className={className} {...props} />
-    )
-  );
+    );
   TabsList.displayName = "TabsList";
 
-  const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>(
-    ({ className, ...props }, ref) => (
+  const TabsTrigger = ({ ref, className, ...props }: TabsTriggerProps & { ref?: React.Ref<HTMLButtonElement> }) => (
       <TabsTriggerPrimitive ref={ref} className={className} {...props} />
-    )
-  );
+    );
   TabsTrigger.displayName = "TabsTrigger";
 
-  const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
-    ({ className, ...props }, ref) => (
+  const TabsContent = ({ ref, className, ...props }: TabsContentProps & { ref?: React.Ref<HTMLDivElement> }) => (
       <TabsContentPrimitive ref={ref} className={className} {...props} />
-    )
-  );
+    );
   TabsContent.displayName = "TabsContent";
 
   export { Tabs, TabsList, TabsTrigger, TabsContent };

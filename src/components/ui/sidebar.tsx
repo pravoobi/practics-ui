@@ -1,13 +1,7 @@
 import * as React from "react";
   import { cn } from "@/lib/utils";
 
-  const Sidebar = React.forwardRef<
-    HTMLDivElement,
-    React.HTMLAttributes<HTMLDivElement> & {
-      isOpen?: boolean;
-      onClose?: () => void;
-    }
-  >(({ className, isOpen, onClose, children, ...props }, ref) => {
+  const Sidebar = ({ ref, className, isOpen, onClose, children, ...props }: React.HTMLAttributes<HTMLDivElement> & { isOpen?: boolean; onClose?: () => void; ref?: React.Ref<HTMLDivElement> }) => {
     const isDrawerMode = onClose !== undefined;
     return (
       <>
@@ -37,64 +31,46 @@ import * as React from "react";
         </div>
       </>
     );
-  });
+  };
   Sidebar.displayName = "Sidebar";
 
-  const SidebarHeader = React.forwardRef<
-    HTMLDivElement,
-    React.HTMLAttributes<HTMLDivElement>
-  >(({ className, ...props }, ref) => (
+  const SidebarHeader = ({ ref, className, ...props }: React.HTMLAttributes<HTMLDivElement> & { ref?: React.Ref<HTMLDivElement> }) => (
     <div
       ref={ref}
       className={cn("flex h-14 items-center border-b border-border px-4", className)}
       {...props}
     />
-  ));
+  );
   SidebarHeader.displayName = "SidebarHeader";
 
-  const SidebarContent = React.forwardRef<
-    HTMLDivElement,
-    React.HTMLAttributes<HTMLDivElement>
-  >(({ className, ...props }, ref) => (
+  const SidebarContent = ({ ref, className, ...props }: React.HTMLAttributes<HTMLDivElement> & { ref?: React.Ref<HTMLDivElement> }) => (
     <div
       ref={ref}
       className={cn("flex-1 overflow-y-auto py-2", className)}
       {...props}
     />
-  ));
+  );
   SidebarContent.displayName = "SidebarContent";
 
-  const SidebarFooter = React.forwardRef<
-    HTMLDivElement,
-    React.HTMLAttributes<HTMLDivElement>
-  >(({ className, ...props }, ref) => (
+  const SidebarFooter = ({ ref, className, ...props }: React.HTMLAttributes<HTMLDivElement> & { ref?: React.Ref<HTMLDivElement> }) => (
     <div
       ref={ref}
       className={cn("border-t border-border p-4", className)}
       {...props}
     />
-  ));
+  );
   SidebarFooter.displayName = "SidebarFooter";
 
-  const SidebarNav = React.forwardRef<
-    HTMLElement,
-    React.HTMLAttributes<HTMLElement>
-  >(({ className, ...props }, ref) => (
+  const SidebarNav = ({ ref, className, ...props }: React.HTMLAttributes<HTMLElement> & { ref?: React.Ref<HTMLElement> }) => (
     <nav
       ref={ref}
       className={cn("flex flex-col gap-1 px-2", className)}
       {...props}
     />
-  ));
+  );
   SidebarNav.displayName = "SidebarNav";
 
-  const SidebarNavItem = React.forwardRef<
-    HTMLAnchorElement,
-    React.AnchorHTMLAttributes<HTMLAnchorElement> & {
-      isActive?: boolean;
-      asChild?: boolean;
-    }
-  >(({ className, isActive, ...props }, ref) => (
+  const SidebarNavItem = ({ ref, className, isActive, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { isActive?: boolean; ref?: React.Ref<HTMLAnchorElement> }) => (
     <a
       ref={ref}
       className={cn(
@@ -108,31 +84,25 @@ import * as React from "react";
       )}
       {...props}
     />
-  ));
+  );
   SidebarNavItem.displayName = "SidebarNavItem";
 
-  const SidebarNavGroup = React.forwardRef<
-    HTMLDivElement,
-    React.HTMLAttributes<HTMLDivElement>
-  >(({ className, ...props }, ref) => (
+  const SidebarNavGroup = ({ ref, className, ...props }: React.HTMLAttributes<HTMLDivElement> & { ref?: React.Ref<HTMLDivElement> }) => (
     <div
       ref={ref}
       className={cn("mb-4", className)}
       {...props}
     />
-  ));
+  );
   SidebarNavGroup.displayName = "SidebarNavGroup";
 
-  const SidebarNavGroupLabel = React.forwardRef<
-    HTMLParagraphElement,
-    React.HTMLAttributes<HTMLParagraphElement>
-  >(({ className, ...props }, ref) => (
+  const SidebarNavGroupLabel = ({ ref, className, ...props }: React.HTMLAttributes<HTMLParagraphElement> & { ref?: React.Ref<HTMLParagraphElement> }) => (
     <p
       ref={ref}
       className={cn("mb-1 px-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground", className)}
       {...props}
     />
-  ));
+  );
   SidebarNavGroupLabel.displayName = "SidebarNavGroupLabel";
 
   export {

@@ -1,12 +1,9 @@
- import * as React from "react";
+import * as React from "react";
   import { Checkbox as BaseCheckbox } from "@/components/ui/checkbox";
   import { cn } from "@/lib/utils";
   import type { CheckboxProps } from "./Checkbox.types";
 
-  const Checkbox = React.forwardRef<
-    React.ElementRef<typeof BaseCheckbox>,
-    CheckboxProps
-  >(({ label, error, helperText, id, className, ...props }, ref) => {
+  const Checkbox = ({ ref, label, error, helperText, id, className, ...props }: CheckboxProps & { ref?: React.Ref<React.ElementRef<typeof BaseCheckbox>> }) => {
     const checkboxId = id ?? React.useId();
     const helperId = `${checkboxId}-helper`;
     const errorId = `${checkboxId}-error`;
@@ -48,7 +45,7 @@
         )}
       </div>
     );
-  });
+  };
 
   Checkbox.displayName = "Checkbox";
 

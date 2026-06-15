@@ -3,8 +3,7 @@ import { Button } from "@/components/Button";
 import { cn } from "@/lib/utils";
 import type { EmptyStateProps } from "./EmptyState.types";
 
-const EmptyState = React.forwardRef<HTMLDivElement, EmptyStateProps>(
-  ({ icon, title, description, action, className, ...props }, ref) => (
+const EmptyState = ({ ref, icon, title, description, action, className, ...props }: EmptyStateProps & { ref?: React.Ref<HTMLDivElement> }) => (
     <div
       ref={ref}
       className={cn(
@@ -33,8 +32,7 @@ const EmptyState = React.forwardRef<HTMLDivElement, EmptyStateProps>(
         </Button>
       )}
     </div>
-  )
-);
+  );
 
 EmptyState.displayName = "EmptyState";
 

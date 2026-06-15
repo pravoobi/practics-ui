@@ -3,8 +3,7 @@ import * as React from "react";
   import { Button as BaseButton } from "@/components/ui/button";
   import type { ButtonProps } from "./Button.types";
 
-  const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ loading, iconLeft, iconRight, disabled, children, ...props }, ref) => {
+  const Button = ({ ref, loading, iconLeft, iconRight, disabled, children, ...props }: ButtonProps & { ref?: React.Ref<HTMLButtonElement> }) => {
       return (
         <BaseButton
           ref={ref}
@@ -23,8 +22,7 @@ import * as React from "react";
             React.cloneElement(iconRight, { "aria-hidden": true })}
         </BaseButton>
       );
-    }
-  );
+    };
 
   Button.displayName = "Button";
 

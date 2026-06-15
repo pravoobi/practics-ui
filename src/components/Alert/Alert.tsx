@@ -13,8 +13,7 @@ import * as React from "react";
     warning: "border-yellow-500/50 text-yellow-700 [&>svg]:text-yellow-700",
   };
 
-  const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
-    ({ variant = "default", className, ...props }, ref) => {
+  const Alert = ({ ref, variant = "default", className, ...props }: AlertProps & { ref?: React.Ref<HTMLDivElement> }) => {
       const isExtra = variant === "info" || variant === "success" || variant === "warning";
 
       if (isExtra) {
@@ -36,22 +35,17 @@ import * as React from "react";
           {...props}
         />
       );
-    }
-  );
+    };
   Alert.displayName = "Alert";
 
-  const AlertTitle = React.forwardRef<HTMLParagraphElement, AlertTitleProps>(
-    ({ className, ...props }, ref) => (
+  const AlertTitle = ({ ref, className, ...props }: AlertTitleProps & { ref?: React.Ref<HTMLParagraphElement> }) => (
       <AlertTitlePrimitive ref={ref} className={className} {...props} />
-    )
-  );
+    );
   AlertTitle.displayName = "AlertTitle";
 
-  const AlertDescription = React.forwardRef<HTMLParagraphElement, AlertDescriptionProps>(
-    ({ className, ...props }, ref) => (
+  const AlertDescription = ({ ref, className, ...props }: AlertDescriptionProps & { ref?: React.Ref<HTMLParagraphElement> }) => (
       <AlertDescriptionPrimitive ref={ref} className={className} {...props} />
-    )
-  );
+    );
   AlertDescription.displayName = "AlertDescription";
 
   export { Alert, AlertTitle, AlertDescription };

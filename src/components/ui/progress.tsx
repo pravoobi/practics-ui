@@ -1,10 +1,7 @@
 import * as React from "react";
   import { cn } from "@/lib/utils";
 
-  const Progress = React.forwardRef<
-    HTMLDivElement,
-    React.HTMLAttributes<HTMLDivElement> & { value?: number; fillClassName?: string }
-  >(({ className, value = 0, fillClassName, ...props }, ref) => (
+  const Progress = ({ ref, className, value = 0, fillClassName, ...props }: React.HTMLAttributes<HTMLDivElement> & { value?: number; fillClassName?: string; ref?: React.Ref<HTMLDivElement> }) => (
     <div
       ref={ref}
       role="progressbar"
@@ -22,7 +19,7 @@ import * as React from "react";
         style={{ width: `${Math.min(100, Math.max(0, value))}%` }}
       />
     </div>
-  ));
+  );
   Progress.displayName = "Progress";
 
   export { Progress };

@@ -1,4 +1,4 @@
- import * as React from "react";
+import * as React from "react";
   import {
     Avatar as AvatarPrimitive,
     AvatarImage,
@@ -15,8 +15,7 @@
     xl: "h-16 w-16 text-lg",
   };
 
-  const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(
-    ({ src, alt, fallback, size = "md", className, ...props }, ref) => (
+  const Avatar = ({ ref, src, alt, fallback, size = "md", className, ...props }: AvatarProps & { ref?: React.Ref<HTMLSpanElement> }) => (
       <AvatarPrimitive
         ref={ref}
         className={cn(sizeMap[size], className)}
@@ -25,8 +24,7 @@
         {src && <AvatarImage src={src} alt={alt} />}
         <AvatarFallback>{fallback}</AvatarFallback>
       </AvatarPrimitive>
-    )
-  );
+    );
   Avatar.displayName = "Avatar";
 
   export { Avatar };

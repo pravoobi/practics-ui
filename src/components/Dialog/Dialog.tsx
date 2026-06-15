@@ -26,11 +26,9 @@ import * as React from "react";
   );
   Dialog.displayName = "Dialog";
 
-  const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
-    ({ className, ...props }, ref) => (
+  const DialogContent = ({ ref, className, ...props }: DialogContentProps & { ref?: React.Ref<HTMLDivElement> }) => (
       <DialogContentPrimitive ref={ref} className={className} {...props} />
-    )
-  );
+    );
   DialogContent.displayName = "DialogContent";
 
   const DialogHeader = ({ className, ...props }: DialogHeaderProps) => (
@@ -43,18 +41,14 @@ import * as React from "react";
   );
   DialogFooter.displayName = "DialogFooter";
 
-  const DialogTitle = React.forwardRef<HTMLHeadingElement, DialogTitleProps>(
-    ({ className, ...props }, ref) => (
+  const DialogTitle = ({ ref, className, ...props }: DialogTitleProps & { ref?: React.Ref<HTMLHeadingElement> }) => (
       <DialogTitlePrimitive ref={ref} className={className} {...props} />
-    )
-  );
+    );
   DialogTitle.displayName = "DialogTitle";
 
-  const DialogDescription = React.forwardRef<HTMLParagraphElement, DialogDescriptionProps>(
-    ({ className, ...props }, ref) => (
+  const DialogDescription = ({ ref, className, ...props }: DialogDescriptionProps & { ref?: React.Ref<HTMLParagraphElement> }) => (
       <DialogDescriptionPrimitive ref={ref} className={className} {...props} />
-    )
-  );
+    );
   DialogDescription.displayName = "DialogDescription";
 
   export {

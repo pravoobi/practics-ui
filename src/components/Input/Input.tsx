@@ -1,22 +1,16 @@
- import * as React from "react";
+import * as React from "react";
   import { cn } from "@/lib/utils";
   import { Input as BaseInput } from "@/components/ui/input";
   import type { InputProps } from "./Input.types";
 
-  const Input = React.forwardRef<HTMLInputElement, InputProps>(
-    (
-      {
-        label,
+  const Input = ({ ref, label,
         error,
         helperText,
         iconLeft,
         iconRight,
         className,
         id,
-        ...props
-      },
-      ref
-    ) => {
+        ...props }: InputProps & { ref?: React.Ref<HTMLInputElement> }) => {
       const inputId = id ?? React.useId();
       const helperId = `${inputId}-helper`;
       const errorId = `${inputId}-error`;
@@ -76,8 +70,7 @@
           )}
         </div>
       );
-    }
-  );
+    };
 
   Input.displayName = "Input";
 

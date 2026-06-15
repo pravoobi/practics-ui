@@ -15,8 +15,7 @@ import * as React from "react";
     neutral: "→",
   };
 
-  const StatCard = React.forwardRef<HTMLDivElement, StatCardProps>(
-    ({ label, value, change, trend = "neutral", icon, className }, ref) => (
+  const StatCard = ({ ref, label, value, change, trend = "neutral", icon, className }: StatCardProps & { ref?: React.Ref<HTMLDivElement> }) => (
       <Card ref={ref} className={cn("p-0", className)}>
         <CardContent className={"8"}>
           <div className="flex items-start justify-between">
@@ -44,8 +43,7 @@ import * as React from "react";
           </div>
         </CardContent>
       </Card>
-    )
-  );
+    );
   StatCard.displayName = "StatCard";
 
   export { StatCard };

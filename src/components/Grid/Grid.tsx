@@ -31,8 +31,7 @@ import * as React from "react";
     6: "gap-y-6", 8: "gap-y-8", 12: "gap-y-12", 16: "gap-y-16",
   };
 
-  const Grid = React.forwardRef<HTMLElement, GridProps>(
-    ({ cols, rows, gap, gapX, gapY, className, ...props }, ref) => {
+  const Grid = ({ ref, cols, rows, gap, gapX, gapY, className, ...props }: GridProps & { ref?: React.Ref<HTMLElement> }) => {
       return (
         <Box
           ref={ref}
@@ -48,8 +47,7 @@ import * as React from "react";
           {...props}
         />
       );
-    }
-  );
+    };
 
   Grid.displayName = "Grid";
 

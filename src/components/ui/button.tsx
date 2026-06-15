@@ -35,8 +35,7 @@ import * as React from "react";
     asChild?: boolean;
   }
 
-  const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ className, variant, size, asChild = false, ...props }, ref) => {
+  const Button = ({ ref, className, variant, size, asChild = false, ...props }: ButtonProps & { ref?: React.Ref<HTMLButtonElement> }) => {
       const Comp = asChild ? Slot : "button";
       return (
         <Comp
@@ -45,8 +44,7 @@ import * as React from "react";
           {...props}
         />
       );
-    }
-  );
+    };
 
   Button.displayName = "Button";
 

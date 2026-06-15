@@ -11,8 +11,7 @@ import * as React from "react";
     full: "max-w-full",
   };
 
-  const Container = React.forwardRef<HTMLElement, ContainerProps>(
-    ({ size = "lg", className, ...props }, ref) => {
+  const Container = ({ ref, size = "lg", className, ...props }: ContainerProps & { ref?: React.Ref<HTMLElement> }) => {
       return (
         <Box
           ref={ref}
@@ -24,8 +23,7 @@ import * as React from "react";
           {...props}
         />
       );
-    }
-  );
+    };
 
   Container.displayName = "Container";
 
