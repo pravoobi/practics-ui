@@ -10,6 +10,12 @@ import { defineConfig } from "vitest/config";
       setupFiles: ["./src/test/setup.ts"],
       css: false,
       include: ["src/**/*.test.{ts,tsx}"],
+      coverage: {
+        provider: "v8",
+        reporter: ["text", "lcov", "json-summary"],
+        include: ["src/components/**/*.{ts,tsx}"],
+        exclude: ["src/**/*.stories.{ts,tsx}", "src/**/*.types.ts", "src/test/**"],
+      },
     },
     resolve: {
       alias: {

@@ -1,5 +1,11 @@
 # @practics/ui
 
+[![CI](https://github.com/pravoobi/practics-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/pravoobi/practics-ui/actions/workflows/ci.yml)
+[![Publish](https://github.com/pravoobi/practics-ui/actions/workflows/publish.yml/badge.svg)](https://github.com/pravoobi/practics-ui/actions/workflows/publish.yml)
+[![Coverage](https://codecov.io/gh/pravoobi/practics-ui/graph/badge.svg)](https://codecov.io/gh/pravoobi/practics-ui)
+[![npm version](https://img.shields.io/npm/v/@practics/ui)](https://www.npmjs.com/package/@practics/ui)
+[![React](https://img.shields.io/badge/React-18%20%7C%2019-61dafb)](https://react.dev)
+
 A React component library built with Tailwind CSS and Radix UI primitives.
 
 ## Installation
@@ -111,8 +117,8 @@ Browse all components and their props live:
 
 ```json
 {
-  "react": "^18.0.0",
-  "react-dom": "^18.0.0"
+  "react": "^18.0.0 || ^19.0.0",
+  "react-dom": "^18.0.0 || ^19.0.0"
 }
 ```
 
