@@ -4,6 +4,6 @@ import type { InputProps as BaseInputProps } from "@/components/ui/input";
     label?: string;
     error?: string;
     helperText?: string;
-    iconLeft?: React.ReactElement;
-    iconRight?: React.ReactElement;
+    iconLeft?: React.ReactElement<any>;
+    iconRight?: React.ReactElement<any>;
   }

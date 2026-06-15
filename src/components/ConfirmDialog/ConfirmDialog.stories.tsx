@@ -12,7 +12,7 @@ const meta: Meta<typeof ConfirmDialog> = {
 export default meta;
 type Story = StoryObj<typeof ConfirmDialog>;
 
-const Controlled = (props: Omit<React.ComponentProps<typeof ConfirmDialog>, "open" | "onOpenChange">) => {
+const Controlled = (props: Omit<React.ComponentProps<typeof ConfirmDialog>, "open" | "onOpenChange" | "onConfirm">) => {
   const [open, setOpen] = React.useState(false);
   return (
     <>
