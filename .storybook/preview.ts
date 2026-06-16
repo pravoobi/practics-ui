@@ -12,6 +12,7 @@ import type { Preview } from "@storybook/react";
         defaultTheme: "light",
       }),
     ],
+
     parameters: {
       controls: {
         matchers: {
@@ -21,6 +22,8 @@ import type { Preview } from "@storybook/react";
       },
       actions: { argTypesRegex: "^on[A-Z].*" },
     },
+
+    tags: ["autodocs"]
   };
 
   export default preview;
