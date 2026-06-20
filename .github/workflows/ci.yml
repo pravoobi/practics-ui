@@ -34,6 +34,9 @@ jobs:
 
   size-limit:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
 
@@ -44,10 +47,21 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
+      # On PRs: compare vs base branch and post a size-delta comment
+      - name: Check bundle size vs base (PR)
+        if: github.event_name == 'pull_request'
+        uses: andresz1/size-limit-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          script: build:lib
+
+      # On push to master: plain hard-ceiling check (no base to compare against)
       - name: Build library
+        if: github.event_name == 'push'
         run: npm run build:lib
 
-      - name: Check bundle size budget
+      - name: Check bundle size ceiling (push)
+        if: github.event_name == 'push'
         run: npm run size
 
   lighthouse:

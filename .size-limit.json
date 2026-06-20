@@ -2,14 +2,14 @@
   {
     "name": "ESM bundle (dist/index.js, gzipped)",
     "path": "dist/index.js",
-    "limit": "40 KB",
+    "limit": "37 KB",
     "gzip": true,
     "brotli": false
   },
   {
     "name": "CJS bundle (dist/index.cjs, gzipped)",
     "path": "dist/index.cjs",
-    "limit": "40 KB",
+    "limit": "38 KB",
     "gzip": true,
     "brotli": false
   }
