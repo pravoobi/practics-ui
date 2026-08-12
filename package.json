@@ -26,6 +26,10 @@
     "tailwind",
     "radix"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pravoobi/practics-ui.git"
+  },
   "author": "pravoobi",
   "license": "ISC",
   "workspaces": [

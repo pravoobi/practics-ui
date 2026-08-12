@@ -23,6 +23,11 @@
     "practics-ui",
     "ai-tools"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pravoobi/practics-ui.git",
+    "directory": "mcp"
+  },
   "author": "pravoobi",
   "license": "ISC",
   "engines": {
