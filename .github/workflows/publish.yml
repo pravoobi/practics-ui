@@ -69,12 +69,24 @@ jobs:
 
       # ── Publish @practics/ui ──────────────────────────────────────────────────
       - name: Publish @practics/ui to npm
-        run: npm publish --access public --provenance
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if npm view @practics/ui@${VERSION} version --silent 2>/dev/null; then
+            echo "✓ @practics/ui@${VERSION} already published — skipping"
+          else
+            npm publish --access public --provenance
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # ── Publish @practics/ui-mcp ──────────────────────────────────────────────
       - name: Publish @practics/ui-mcp to npm
-        run: cd mcp && npm publish --access public --provenance
+        run: |
+          VERSION=$(node -p "require('./mcp/package.json').version")
+          if npm view @practics/ui-mcp@${VERSION} version --silent 2>/dev/null; then
+            echo "✓ @practics/ui-mcp@${VERSION} already published — skipping"
+          else
+            cd mcp && npm publish --access public --provenance
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
