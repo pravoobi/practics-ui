@@ -3,6 +3,9 @@ import { loadComponents, getComponent } from "./data.js";
 import { listComponents, listComponentsInputSchema } from "./tools/list_components.js";
 import { getComponentData, getComponentInputSchema } from "./tools/get_component.js";
 import { getExample, getExampleInputSchema } from "./tools/get_example.js";
+import { searchComponentsTool, searchComponentsInputSchema } from "./tools/search_components.js";
+import { checkProps, checkPropsInputSchema } from "./tools/check_props.js";
+import { previewComponent, previewComponentInputSchema } from "./tools/preview_component.js";
 import { renderComponentMarkdown, renderPreviewHtml } from "./resources/component.js";
 
 export function createServer(): McpServer {
@@ -56,6 +59,56 @@ export function createServer(): McpServer {
     getExampleInputSchema.shape,
     async (args) => {
       const result = getExample(args as Parameters<typeof getExample>[0]);
+      const error = typeof result.error === "string" ? result.error : null;
+      if (error) {
+        return { content: [{ type: "text" as const, text: error }], isError: true };
+      }
+      return {
+        content: [{ type: "text" as const, text: JSON.stringify(result, null, 2) }],
+      };
+    }
+  );
+
+  server.tool(
+    "search_components",
+    "Search @practics/ui components by keyword or natural language. " +
+      "Use when you know the kind of thing you need but not the exact component name. " +
+      "Examples: 'form field with error state', 'data visualisation', 'navigation menu', 'modal'.",
+    searchComponentsInputSchema.shape,
+    async (args) => {
+      const result = searchComponentsTool(args as Parameters<typeof searchComponentsTool>[0]);
+      return {
+        content: [{ type: "text", text: JSON.stringify(result, null, 2) }],
+      };
+    }
+  );
+
+  server.tool(
+    "check_props",
+    "Validate a set of props against a component's declared API before writing code. " +
+      "Catches missing required props, invalid enum values, and unknown prop names. " +
+      "Always run this when you are unsure whether a prop value is valid.",
+    checkPropsInputSchema.shape,
+    async (args) => {
+      const result = checkProps(args as Parameters<typeof checkProps>[0]);
+      const error = typeof result.error === "string" ? result.error : null;
+      if (error) {
+        return { content: [{ type: "text" as const, text: error }], isError: true };
+      }
+      return {
+        content: [{ type: "text" as const, text: JSON.stringify(result, null, 2) }],
+      };
+    }
+  );
+
+  server.tool(
+    "preview_component",
+    "Get a live Storybook preview URL and embedded HTML for a component story. " +
+      "Returns a previewUrl you can open in a browser and an HTML snippet with an iframe for clients that render HTML content. " +
+      "Use get_example for JSX code snippets; use this tool when you need the visual preview link.",
+    previewComponentInputSchema.shape,
+    async (args) => {
+      const result = previewComponent(args as Parameters<typeof previewComponent>[0]);
       const error = typeof result.error === "string" ? result.error : null;
       if (error) {
         return { content: [{ type: "text" as const, text: error }], isError: true };

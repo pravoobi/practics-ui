@@ -24,15 +24,20 @@ export function getComponent(name: string): Component | undefined {
 
 export function searchComponents(query: string, limit = 5): Component[] {
   const { components } = loadComponents();
-  const q = query.toLowerCase();
+  // Score each token independently so multi-word queries work
+  const tokens = query.toLowerCase().split(/\s+/).filter(Boolean);
+
   const scored = components.map((c) => {
     let score = 0;
-    if (c.name.toLowerCase() === q) score += 100;
-    if (c.name.toLowerCase().includes(q)) score += 50;
-    if (c.slug.includes(q)) score += 40;
-    if (c.description.toLowerCase().includes(q)) score += 20;
-    if (c.category.toLowerCase().includes(q)) score += 15;
-    if (c.props.some((p) => p.name.toLowerCase().includes(q))) score += 10;
+    for (const q of tokens) {
+      if (c.name.toLowerCase() === q) score += 100;
+      if (c.name.toLowerCase().includes(q)) score += 50;
+      if (c.slug.includes(q)) score += 40;
+      if (c.description.toLowerCase().includes(q)) score += 20;
+      if (c.category.toLowerCase().includes(q)) score += 15;
+      if (c.props.some((p) => p.name.toLowerCase().includes(q))) score += 10;
+      if (c.a11y.guarantees.some((g) => g.toLowerCase().includes(q))) score += 5;
+    }
     return { c, score };
   });
   return scored

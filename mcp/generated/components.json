@@ -3,7 +3,7 @@
   "library": {
     "name": "@practics/ui",
     "version": "0.1.2",
-    "publishedAt": "2026-08-11T12:21:47.895Z"
+    "publishedAt": "2026-08-12T06:30:40.350Z"
   },
   "components": [
     {
@@ -406,6 +406,1383 @@
       }
     },
     {
+      "name": "Textarea",
+      "slug": "textarea",
+      "description": "Labeled multi-line text input with helper text and error message. Same a11y wiring as Input.",
+      "category": "form",
+      "props": [
+        {
+          "name": "ref",
+          "type": "Ref<HTMLTextAreaElement>",
+          "required": false,
+          "description": "React 19 ref — pass directly, no forwardRef needed."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "error",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "helperText",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Default",
+          "storyId": "components-textarea--default",
+          "propsJson": {
+            "label": "Message",
+            "placeholder": "Enter your message"
+          },
+          "jsx": "<Textarea label=\"Message\" placeholder=\"Enter your message\" />"
+        },
+        {
+          "name": "WithHelperText",
+          "storyId": "components-textarea--with-helper-text",
+          "propsJson": {
+            "label": "Message",
+            "placeholder": "Enter your message",
+            "helperText": "Maximum 500 characters."
+          },
+          "jsx": "<Textarea label=\"Message\" placeholder=\"Enter your message\" helperText=\"Maximum 500 characters.\", />"
+        },
+        {
+          "name": "WithError",
+          "storyId": "components-textarea--with-error",
+          "propsJson": {
+            "label": "Message",
+            "placeholder": "Enter your message",
+            "error": "Message is required."
+          },
+          "jsx": "<Textarea label=\"Message\" placeholder=\"Enter your message\" error=\"Message is required.\", />"
+        },
+        {
+          "name": "WithRows",
+          "storyId": "components-textarea--with-rows",
+          "propsJson": {
+            "label": "Message",
+            "placeholder": "Enter your message",
+            "rows": "6"
+          },
+          "jsx": "<Textarea label=\"Message\" placeholder=\"Enter your message\" rows={6,} />"
+        },
+        {
+          "name": "Disabled",
+          "storyId": "components-textarea--disabled",
+          "propsJson": {
+            "label": "Message",
+            "placeholder": "Enter your message",
+            "disabled": "true"
+          },
+          "jsx": "<Textarea label=\"Message\" placeholder=\"Enter your message\" disabled={true,} />"
+        },
+        {
+          "name": "NoLabel",
+          "storyId": "components-textarea--no-label",
+          "propsJson": {
+            "placeholder": "Write something...",
+            "\"aria-label\"": "Message"
+          },
+          "jsx": "<Textarea placeholder=\"Write something...\" aria-label=\"Message\", />"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [],
+        "guarantees": [
+          "Label is associated with textarea via htmlFor/id.",
+          "Helper and error text are linked via aria-describedby.",
+          "aria-invalid is set when error is present."
+        ],
+        "requirements": [
+          "Provide either a label prop or an explicit aria-label."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/Textarea/Textarea.tsx"
+      },
+      "storybook": {
+        "titlePath": "Components/Textarea",
+        "stories": [
+          {
+            "key": "Default",
+            "id": "components-textarea--default"
+          },
+          {
+            "key": "WithHelperText",
+            "id": "components-textarea--with-helper-text"
+          },
+          {
+            "key": "WithError",
+            "id": "components-textarea--with-error"
+          },
+          {
+            "key": "WithRows",
+            "id": "components-textarea--with-rows"
+          },
+          {
+            "key": "Disabled",
+            "id": "components-textarea--disabled"
+          },
+          {
+            "key": "NoLabel",
+            "id": "components-textarea--no-label"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Checkbox",
+      "slug": "checkbox",
+      "description": "Accessible checkbox built on Radix UI with optional label, helper text, and error state.",
+      "category": "form",
+      "props": [
+        {
+          "name": "ref",
+          "type": "Ref<HTMLButtonElement>",
+          "required": false,
+          "description": "React 19 ref — pass directly, no forwardRef needed."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "error",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "helperText",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "defaultChecked",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "checked",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "\"aria-label\"",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Default",
+          "storyId": "components-checkbox--default",
+          "propsJson": {
+            "label": "Accept terms and conditions"
+          },
+          "jsx": "<Checkbox label=\"Accept terms and conditions\" />"
+        },
+        {
+          "name": "Checked",
+          "storyId": "components-checkbox--checked",
+          "propsJson": {
+            "label": "Accept terms and conditions",
+            "defaultChecked": "true"
+          },
+          "jsx": "<Checkbox label=\"Accept terms and conditions\" defaultChecked={true} />"
+        },
+        {
+          "name": "WithHelperText",
+          "storyId": "components-checkbox--with-helper-text",
+          "propsJson": {
+            "label": "Accept terms and conditions",
+            "helperText": "You must accept to continue."
+          },
+          "jsx": "<Checkbox label=\"Accept terms and conditions\" helperText=\"You must accept to continue.\", />"
+        },
+        {
+          "name": "WithError",
+          "storyId": "components-checkbox--with-error",
+          "propsJson": {
+            "label": "Accept terms and conditions",
+            "error": "You must accept the terms."
+          },
+          "jsx": "<Checkbox label=\"Accept terms and conditions\" error=\"You must accept the terms.\", />"
+        },
+        {
+          "name": "Disabled",
+          "storyId": "components-checkbox--disabled",
+          "propsJson": {
+            "label": "Accept terms and conditions",
+            "disabled": "true"
+          },
+          "jsx": "<Checkbox label=\"Accept terms and conditions\" disabled={true} />"
+        },
+        {
+          "name": "DisabledChecked",
+          "storyId": "components-checkbox--disabled-checked",
+          "propsJson": {
+            "label": "Accept terms and conditions",
+            "disabled": "true",
+            "defaultChecked": "true"
+          },
+          "jsx": "<Checkbox label=\"Accept terms and conditions\" disabled={true} defaultChecked={true,} />"
+        },
+        {
+          "name": "NoLabel",
+          "storyId": "components-checkbox--no-label",
+          "propsJson": {
+            "\"aria-label\"": "Accept terms"
+          },
+          "jsx": "<Checkbox aria-label=\"Accept terms\" />"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [
+          "@radix-ui/react-checkbox"
+        ],
+        "guarantees": [
+          "Keyboard operable via Space key.",
+          "Role 'checkbox' with aria-checked set by Radix.",
+          "Associated label wired via htmlFor/id.",
+          "aria-invalid and aria-describedby set when error is present."
+        ],
+        "requirements": [
+          "Provide either a label prop or an explicit aria-label."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/Checkbox/Checkbox.tsx"
+      },
+      "storybook": {
+        "titlePath": "Components/Checkbox",
+        "stories": [
+          {
+            "key": "Default",
+            "id": "components-checkbox--default"
+          },
+          {
+            "key": "Checked",
+            "id": "components-checkbox--checked"
+          },
+          {
+            "key": "WithHelperText",
+            "id": "components-checkbox--with-helper-text"
+          },
+          {
+            "key": "WithError",
+            "id": "components-checkbox--with-error"
+          },
+          {
+            "key": "Disabled",
+            "id": "components-checkbox--disabled"
+          },
+          {
+            "key": "DisabledChecked",
+            "id": "components-checkbox--disabled-checked"
+          },
+          {
+            "key": "NoLabel",
+            "id": "components-checkbox--no-label"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Select",
+      "slug": "select",
+      "description": "Dropdown select built on Radix UI. Supports flat options and grouped option sets with disabled states.",
+      "category": "form",
+      "props": [
+        {
+          "name": "ref",
+          "type": "Ref<HTMLButtonElement>",
+          "required": false,
+          "description": "React 19 ref — pass directly, no forwardRef needed."
+        },
+        {
+          "name": "options",
+          "type": "SelectOption[]",
+          "required": false
+        },
+        {
+          "name": "groups",
+          "type": "SelectOptionGroup[]",
+          "required": false
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "defaultValue",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "onValueChange",
+          "type": "(value: string) => void",
+          "required": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Default",
+          "storyId": "components-select--default",
+          "jsx": "<div style={{ width: \"240px\" }}>\n      <Select options={fruitOptions} />\n    </div>"
+        },
+        {
+          "name": "WithDefaultValue",
+          "storyId": "components-select--with-default-value",
+          "jsx": "<div style={{ width: \"240px\" }}>\n      <Select options={fruitOptions} defaultValue=\"banana\" />\n    </div>"
+        },
+        {
+          "name": "WithDisabledOption",
+          "storyId": "components-select--with-disabled-option",
+          "jsx": "<div style={{ width: \"240px\" }}>\n      <Select\n        options={[\n          { value: \"apple\", label: \"Apple\" },\n          { value: \"banana\", label: \"Banana\", disabled: true },\n          { value: \"cherry\", label: \"Cherry\" },\n        ]}\n      />\n    </div>"
+        },
+        {
+          "name": "WithGroups",
+          "storyId": "components-select--with-groups",
+          "jsx": "<div style={{ width: \"240px\" }}>\n      <Select\n        groups={[\n          {\n            label: \"Fruits\",\n            options: [\n              { value: \"apple\", label: \"Apple\" },\n              { value: \"banana\", label: \"Banana\" },\n            ],\n          },\n          {\n            label: \"Vegetables\",\n            options: [\n              { value: \"carrot\", label: \"Carrot\" },\n              { value: \"broccoli\", label: \"Broccoli\" },\n            ],\n          },\n        ]}\n      />\n    </div>"
+        },
+        {
+          "name": "Disabled",
+          "storyId": "components-select--disabled",
+          "jsx": "<div style={{ width: \"240px\" }}>\n      <Select options={fruitOptions} disabled placeholder=\"Cannot select\" />\n    </div>"
+        },
+        {
+          "name": "CustomPlaceholder",
+          "storyId": "components-select--custom-placeholder",
+          "jsx": "<div style={{ width: \"240px\" }}>\n      <Select options={fruitOptions} placeholder=\"Choose a fruit...\" />\n    </div>"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [
+          "@radix-ui/react-select"
+        ],
+        "guarantees": [
+          "Keyboard navigation: Arrow keys move between options, Enter/Space selects.",
+          "Role 'listbox' and 'option' set by Radix.",
+          "Selected option announced to screen readers.",
+          "Escape key closes the dropdown."
+        ],
+        "requirements": [
+          "Provide an accessible label via a sibling <label> + htmlFor, or aria-label on the trigger."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/Select/Select.tsx"
+      },
+      "storybook": {
+        "titlePath": "Components/Select",
+        "stories": [
+          {
+            "key": "Default",
+            "id": "components-select--default"
+          },
+          {
+            "key": "WithDefaultValue",
+            "id": "components-select--with-default-value"
+          },
+          {
+            "key": "WithDisabledOption",
+            "id": "components-select--with-disabled-option"
+          },
+          {
+            "key": "WithGroups",
+            "id": "components-select--with-groups"
+          },
+          {
+            "key": "Disabled",
+            "id": "components-select--disabled"
+          },
+          {
+            "key": "CustomPlaceholder",
+            "id": "components-select--custom-placeholder"
+          }
+        ]
+      },
+      "subcomponents": [
+        "SelectTrigger",
+        "SelectContent",
+        "SelectItem",
+        "SelectValue",
+        "SelectGroup",
+        "SelectLabel",
+        "SelectSeparator"
+      ]
+    },
+    {
+      "name": "Box",
+      "slug": "box",
+      "description": "Polymorphic layout primitive. Renders any HTML element via the 'as' prop with spacing scale props for padding and margin.",
+      "category": "layout",
+      "props": [
+        {
+          "name": "ref",
+          "type": "Ref<HTMLElement>",
+          "required": false,
+          "description": "React 19 ref — pass directly, no forwardRef needed."
+        },
+        {
+          "name": "as",
+          "type": "React.ElementType",
+          "required": false
+        },
+        {
+          "name": "padding",
+          "type": "SpacingScale",
+          "required": false
+        },
+        {
+          "name": "paddingX",
+          "type": "SpacingScale",
+          "required": false
+        },
+        {
+          "name": "paddingY",
+          "type": "SpacingScale",
+          "required": false
+        },
+        {
+          "name": "margin",
+          "type": "SpacingScale",
+          "required": false
+        },
+        {
+          "name": "marginX",
+          "type": "SpacingScale",
+          "required": false
+        },
+        {
+          "name": "marginY",
+          "type": "SpacingScale",
+          "required": false
+        },
+        {
+          "name": "display",
+          "type": "DisplayValue",
+          "required": false
+        },
+        {
+          "name": "...HTMLHTMLElementAttributes",
+          "type": "spreads",
+          "required": false,
+          "description": "All standard HTML htmlelement element attributes are accepted."
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Default",
+          "storyId": "layout-box--default",
+          "propsJson": {
+            "children": "Default Box"
+          },
+          "jsx": "<Box style>Default Box</Box>"
+        },
+        {
+          "name": "WithPadding",
+          "storyId": "layout-box--with-padding",
+          "propsJson": {
+            "children": "Padding 4",
+            "padding": "4"
+          },
+          "jsx": "<Box padding={4} style>Padding 4</Box>"
+        },
+        {
+          "name": "WithPaddingXY",
+          "storyId": "layout-box--with-padding-x-y",
+          "propsJson": {
+            "children": "PaddingX 8, PaddingY 2",
+            "paddingX": "8",
+            "paddingY": "2"
+          },
+          "jsx": "<Box PaddingY 2\" paddingX={8} paddingY={2} style,>PaddingX 8, PaddingY 2</Box>"
+        },
+        {
+          "name": "WithMargin",
+          "storyId": "layout-box--with-margin",
+          "propsJson": {
+            "children": "Margin 4",
+            "margin": "4"
+          },
+          "jsx": "<Box margin={4} style>Margin 4</Box>"
+        },
+        {
+          "name": "AsFlex",
+          "storyId": "layout-box--as-flex",
+          "propsJson": {
+            "display": "flex",
+            "padding": "4"
+          },
+          "jsx": "<Box display=\"flex\" padding={4} style />"
+        },
+        {
+          "name": "AsSection",
+          "storyId": "layout-box--as-section",
+          "propsJson": {
+            "as": "section",
+            "padding": "4",
+            "children": "Renders as a section element"
+          },
+          "jsx": "<Box as=\"section\" padding={4} style,>Renders as a section element</Box>"
+        },
+        {
+          "name": "AsMain",
+          "storyId": "layout-box--as-main",
+          "propsJson": {
+            "as": "main",
+            "padding": "6",
+            "children": "Renders as main element"
+          },
+          "jsx": "<Box as=\"main\" padding={6} style,>Renders as main element</Box>"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [],
+        "guarantees": [],
+        "requirements": [
+          "Use the 'as' prop to render a semantically appropriate element (section, article, main, aside) when context requires it."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/Box/Box.tsx"
+      },
+      "storybook": {
+        "titlePath": "Layout/Box",
+        "stories": [
+          {
+            "key": "Default",
+            "id": "layout-box--default"
+          },
+          {
+            "key": "WithPadding",
+            "id": "layout-box--with-padding"
+          },
+          {
+            "key": "WithPaddingXY",
+            "id": "layout-box--with-padding-x-y"
+          },
+          {
+            "key": "WithMargin",
+            "id": "layout-box--with-margin"
+          },
+          {
+            "key": "AsFlex",
+            "id": "layout-box--as-flex"
+          },
+          {
+            "key": "AsSection",
+            "id": "layout-box--as-section"
+          },
+          {
+            "key": "AsMain",
+            "id": "layout-box--as-main"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Stack",
+      "slug": "stack",
+      "description": "Flex layout primitive for linear arrangements of children. Supports direction, gap, alignment, justification, and wrapping.",
+      "category": "layout",
+      "props": [
+        {
+          "name": "direction",
+          "type": "StackDirection",
+          "required": false
+        },
+        {
+          "name": "gap",
+          "type": "StackGap",
+          "required": false
+        },
+        {
+          "name": "align",
+          "type": "StackAlign",
+          "required": false
+        },
+        {
+          "name": "justify",
+          "type": "StackJustify",
+          "required": false
+        },
+        {
+          "name": "wrap",
+          "type": "boolean",
+          "required": false
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Row",
+          "storyId": "layout-stack--row",
+          "propsJson": {
+            "direction": "row",
+            "gap": "2"
+          },
+          "jsx": "<Stack direction=\"row\" gap={2} />"
+        },
+        {
+          "name": "Column",
+          "storyId": "layout-stack--column",
+          "propsJson": {
+            "direction": "column",
+            "gap": "2"
+          },
+          "jsx": "<Stack direction=\"column\" gap={2} />"
+        },
+        {
+          "name": "Centered",
+          "storyId": "layout-stack--centered",
+          "propsJson": {
+            "direction": "row",
+            "gap": "2",
+            "align": "center",
+            "justify": "center"
+          },
+          "jsx": "<Stack direction=\"row\" gap={2} align=\"center\" justify=\"center\" />"
+        },
+        {
+          "name": "SpaceBetween",
+          "storyId": "layout-stack--space-between",
+          "propsJson": {
+            "direction": "row",
+            "align": "center",
+            "justify": "between"
+          },
+          "jsx": "<Stack direction=\"row\" align=\"center\" justify=\"between\" />"
+        },
+        {
+          "name": "Wrapping",
+          "storyId": "layout-stack--wrapping",
+          "propsJson": {
+            "direction": "row",
+            "gap": "2",
+            "wrap": "true"
+          },
+          "jsx": "<Stack direction=\"row\" gap={2} wrap={true} />"
+        },
+        {
+          "name": "AsNav",
+          "storyId": "layout-stack--as-nav",
+          "propsJson": {
+            "as": "nav",
+            "direction": "row",
+            "gap": "4",
+            "align": "center"
+          },
+          "jsx": "<Stack as=\"nav\" direction=\"row\" gap={4} align=\"center\" />"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [],
+        "guarantees": [],
+        "requirements": [
+          "Use the 'as' prop for semantic elements when the stack represents a navigational list or section."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/Stack/Stack.tsx"
+      },
+      "storybook": {
+        "titlePath": "Layout/Stack",
+        "stories": [
+          {
+            "key": "Row",
+            "id": "layout-stack--row"
+          },
+          {
+            "key": "Column",
+            "id": "layout-stack--column"
+          },
+          {
+            "key": "Centered",
+            "id": "layout-stack--centered"
+          },
+          {
+            "key": "SpaceBetween",
+            "id": "layout-stack--space-between"
+          },
+          {
+            "key": "Wrapping",
+            "id": "layout-stack--wrapping"
+          },
+          {
+            "key": "AsNav",
+            "id": "layout-stack--as-nav"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Grid",
+      "slug": "grid",
+      "description": "CSS Grid layout primitive with column/row counts and gap control via design-scale values.",
+      "category": "layout",
+      "props": [
+        {
+          "name": "cols",
+          "type": "GridCols",
+          "required": false
+        },
+        {
+          "name": "rows",
+          "type": "GridRows",
+          "required": false
+        },
+        {
+          "name": "gap",
+          "type": "StackGap",
+          "required": false
+        },
+        {
+          "name": "gapX",
+          "type": "StackGap",
+          "required": false
+        },
+        {
+          "name": "gapY",
+          "type": "StackGap",
+          "required": false
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "TwoColumns",
+          "storyId": "layout-grid--two-columns",
+          "jsx": "<Grid cols={2} gap={4}>{items}</Grid>"
+        },
+        {
+          "name": "ThreeColumns",
+          "storyId": "layout-grid--three-columns",
+          "jsx": "<Grid cols={3} gap={4}>{items}</Grid>"
+        },
+        {
+          "name": "FourColumns",
+          "storyId": "layout-grid--four-columns",
+          "jsx": "<Grid cols={4} gap={4}>{items}</Grid>"
+        },
+        {
+          "name": "WithGapXY",
+          "storyId": "layout-grid--with-gap-x-y",
+          "jsx": "<Grid cols={3} gapX={8} gapY={2}>\r\n        {items}\r\n      </Grid>"
+        },
+        {
+          "name": "WithRows",
+          "storyId": "layout-grid--with-rows",
+          "jsx": "<Grid cols={3} rows={2} gap={4}>\r\n        {items}\r\n      </Grid>"
+        },
+        {
+          "name": "WithPadding",
+          "storyId": "layout-grid--with-padding",
+          "jsx": "<Grid\r\n        cols={3}\r\n        gap={4}\r\n        padding={6}\r\n        style={{ background: \"hsl(var(--muted))\" }}\r\n      >\r\n        {items}\r\n      </Grid>"
+        },
+        {
+          "name": "AsSection",
+          "storyId": "layout-grid--as-section",
+          "jsx": "<Grid as=\"section\" cols={2} gap={4}>\r\n        {items}\r\n      </Grid>"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [],
+        "guarantees": [],
+        "requirements": [
+          "Grid is purely visual layout — ensure reading order of children matches DOM order."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/Grid/Grid.tsx"
+      },
+      "storybook": {
+        "titlePath": "Layout/Grid",
+        "stories": [
+          {
+            "key": "TwoColumns",
+            "id": "layout-grid--two-columns"
+          },
+          {
+            "key": "ThreeColumns",
+            "id": "layout-grid--three-columns"
+          },
+          {
+            "key": "FourColumns",
+            "id": "layout-grid--four-columns"
+          },
+          {
+            "key": "WithGapXY",
+            "id": "layout-grid--with-gap-x-y"
+          },
+          {
+            "key": "WithRows",
+            "id": "layout-grid--with-rows"
+          },
+          {
+            "key": "WithPadding",
+            "id": "layout-grid--with-padding"
+          },
+          {
+            "key": "AsSection",
+            "id": "layout-grid--as-section"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Container",
+      "slug": "container",
+      "description": "Centered max-width wrapper with five named size presets (sm → full). Polymorphic via 'as'.",
+      "category": "layout",
+      "props": [
+        {
+          "name": "ref",
+          "type": "Ref<HTMLDivElement>",
+          "required": false,
+          "description": "React 19 ref — pass directly, no forwardRef needed."
+        },
+        {
+          "name": "size",
+          "type": "ContainerSize",
+          "required": false
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Small",
+          "storyId": "layout-container--small",
+          "jsx": "<Container size=\"sm\">\r\n        <Content />\r\n      </Container>"
+        },
+        {
+          "name": "Medium",
+          "storyId": "layout-container--medium",
+          "jsx": "<Container size=\"md\">\r\n        <Content />\r\n      </Container>"
+        },
+        {
+          "name": "Large",
+          "storyId": "layout-container--large",
+          "jsx": "<Container size=\"lg\">\r\n        <Content />\r\n      </Container>"
+        },
+        {
+          "name": "ExtraLarge",
+          "storyId": "layout-container--extra-large",
+          "jsx": "<Container size=\"xl\">\r\n        <Content />\r\n      </Container>"
+        },
+        {
+          "name": "Full",
+          "storyId": "layout-container--full",
+          "jsx": "<Container size=\"full\">\r\n        <Content />\r\n      </Container>"
+        },
+        {
+          "name": "WithPadding",
+          "storyId": "layout-container--with-padding",
+          "jsx": "<Container size=\"lg\" paddingX={6} paddingY={4}>\r\n        <Content />\r\n      </Container>"
+        },
+        {
+          "name": "AsMain",
+          "storyId": "layout-container--as-main",
+          "jsx": "<Container as=\"main\" size=\"lg\" paddingY={6}>\r\n        <Content />\r\n      </Container>"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [],
+        "guarantees": [],
+        "requirements": []
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/Container/Container.tsx"
+      },
+      "storybook": {
+        "titlePath": "Layout/Container",
+        "stories": [
+          {
+            "key": "Small",
+            "id": "layout-container--small"
+          },
+          {
+            "key": "Medium",
+            "id": "layout-container--medium"
+          },
+          {
+            "key": "Large",
+            "id": "layout-container--large"
+          },
+          {
+            "key": "ExtraLarge",
+            "id": "layout-container--extra-large"
+          },
+          {
+            "key": "Full",
+            "id": "layout-container--full"
+          },
+          {
+            "key": "WithPadding",
+            "id": "layout-container--with-padding"
+          },
+          {
+            "key": "AsMain",
+            "id": "layout-container--as-main"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PageHeader",
+      "slug": "page-header",
+      "description": "Page-level header with eyebrow text, title, and an optional primary action button.",
+      "category": "layout",
+      "props": [
+        {
+          "name": "eyebrow",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "action",
+          "type": "PageHeaderAction",
+          "required": false
+        },
+        {
+          "name": "...HTMLDivAttributes",
+          "type": "spreads",
+          "required": false,
+          "description": "All standard HTML div element attributes are accepted."
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Default",
+          "storyId": "components-pageheader--default",
+          "jsx": "<div style={{ width: \"600px\" }}>\n      <PageHeader title=\"Dashboard\" />\n    </div>"
+        },
+        {
+          "name": "WithEyebrow",
+          "storyId": "components-pageheader--with-eyebrow",
+          "jsx": "<div style={{ width: \"600px\" }}>\n      <PageHeader eyebrow=\"Analytics\" title=\"Dashboard\" />\n    </div>"
+        },
+        {
+          "name": "WithAction",
+          "storyId": "components-pageheader--with-action",
+          "jsx": "<div style={{ width: \"600px\" }}>\n      <PageHeader title=\"Projects\" action={{ label: \"New project\", onClick: () => {} }} />\n    </div>"
+        },
+        {
+          "name": "Full",
+          "storyId": "components-pageheader--full",
+          "jsx": "<div style={{ width: \"600px\" }}>\n      <PageHeader\n        eyebrow=\"Team workspace\"\n        title=\"Projects\"\n        action={{\n          label: \"New project\",\n          onClick: () => {},\n          icon: <PlusIcon />,\n        }}\n      />\n    </div>"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [],
+        "guarantees": [],
+        "requirements": [
+          "Ensure the title renders as the correct heading level for the page hierarchy (wrap in an h1/h2 if needed).",
+          "The action button is a native <button>; provide a descriptive label."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/PageHeader/PageHeader.tsx"
+      },
+      "storybook": {
+        "titlePath": "Components/PageHeader",
+        "stories": [
+          {
+            "key": "Default",
+            "id": "components-pageheader--default"
+          },
+          {
+            "key": "WithEyebrow",
+            "id": "components-pageheader--with-eyebrow"
+          },
+          {
+            "key": "WithAction",
+            "id": "components-pageheader--with-action"
+          },
+          {
+            "key": "Full",
+            "id": "components-pageheader--full"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Breadcrumb",
+      "slug": "breadcrumb",
+      "description": "Breadcrumb navigation trail built from an items array. Supports custom separator and automatic collapsing via maxItems.",
+      "category": "navigation",
+      "props": [
+        {
+          "name": "items",
+          "type": "BreadcrumbItemConfig[]",
+          "required": true
+        },
+        {
+          "name": "separator",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "maxItems",
+          "type": "number",
+          "required": false
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Default",
+          "storyId": "components-breadcrumb--default",
+          "jsx": "<Breadcrumb\r\n        items={[\r\n          { label: \"Home\", href: \"/\" },\r\n          { label: \"Products\", href: \"/products\" },\r\n          { label: \"Laptops\" },\r\n        ]}\r\n      />"
+        },
+        {
+          "name": "TwoItems",
+          "storyId": "components-breadcrumb--two-items",
+          "jsx": "<Breadcrumb\r\n        items={[\r\n          { label: \"Home\", href: \"/\" },\r\n          { label: \"Dashboard\" },\r\n        ]}\r\n      />"
+        },
+        {
+          "name": "SingleItem",
+          "storyId": "components-breadcrumb--single-item",
+          "jsx": "<Breadcrumb items={[{ label: \"Home\" }]} />"
+        },
+        {
+          "name": "CustomSeparator",
+          "storyId": "components-breadcrumb--custom-separator",
+          "jsx": "<Breadcrumb\r\n        items={[\r\n          { label: \"Home\", href: \"/\" },\r\n          { label: \"Settings\", href: \"/settings\" },\r\n          { label: \"Profile\" },\r\n        ]}\r\n        separator=\"›\"\r\n      />"
+        },
+        {
+          "name": "DeepNesting",
+          "storyId": "components-breadcrumb--deep-nesting",
+          "jsx": "<Breadcrumb\r\n        items={[\r\n          { label: \"Home\", href: \"/\" },\r\n          { label: \"Docs\", href: \"/docs\" },\r\n          { label: \"Components\", href: \"/docs/components\" },\r\n          { label: \"Breadcrumb\", href: \"/docs/components/breadcrumb\" },\r\n          { label: \"Examples\" },\r\n        ]}\r\n      />"
+        },
+        {
+          "name": "Collapsed",
+          "storyId": "components-breadcrumb--collapsed",
+          "jsx": "<Breadcrumb\r\n        maxItems={3}\r\n        items={[\r\n          { label: \"Home\", href: \"/\" },\r\n          { label: \"Docs\", href: \"/docs\" },\r\n          { label: \"Components\", href: \"/docs/components\" },\r\n          { label: \"Breadcrumb\", href: \"/docs/components/breadcrumb\" },\r\n          { label: \"Examples\" },\r\n        ]}\r\n      />"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [],
+        "guarantees": [
+          "Renders inside a <nav> with aria-label='breadcrumb'.",
+          "Current page item has aria-current='page'.",
+          "Separator elements are aria-hidden."
+        ],
+        "requirements": [
+          "Provide href for all items except the current page (last item).",
+          "Keep item labels concise — they are read in sequence by screen readers."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/Breadcrumb/Breadcrumb.tsx"
+      },
+      "storybook": {
+        "titlePath": "Components/Breadcrumb",
+        "stories": [
+          {
+            "key": "Default",
+            "id": "components-breadcrumb--default"
+          },
+          {
+            "key": "TwoItems",
+            "id": "components-breadcrumb--two-items"
+          },
+          {
+            "key": "SingleItem",
+            "id": "components-breadcrumb--single-item"
+          },
+          {
+            "key": "CustomSeparator",
+            "id": "components-breadcrumb--custom-separator"
+          },
+          {
+            "key": "DeepNesting",
+            "id": "components-breadcrumb--deep-nesting"
+          },
+          {
+            "key": "Collapsed",
+            "id": "components-breadcrumb--collapsed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Tabs",
+      "slug": "tabs",
+      "description": "Tabbed content switcher built on Radix UI. Accepts either a data-driven items array or fully manual composition.",
+      "category": "navigation",
+      "props": [
+        {
+          "name": "items",
+          "type": "TabItem[]",
+          "required": false
+        },
+        {
+          "name": "defaultValue",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "onValueChange",
+          "type": "(value: string) => void",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Default",
+          "storyId": "components-tabs--default",
+          "jsx": "<Tabs\r\n        items={[\r\n          { value: \"account\", label: \"Account\", content: <p className=\"text-sm\">Account settings go here.</p> },\r\n          { value: \"password\", label: \"Password\", content: <p className=\"text-sm\">Password settings go here.</p> },\r\n          { value: \"notifications\", label: \"Notifications\", content: <p className=\"text-sm\">Notification preferences go here.</p> },\r\n        ]}\r\n      />"
+        },
+        {
+          "name": "WithDefaultValue",
+          "storyId": "components-tabs--with-default-value",
+          "jsx": "<Tabs\r\n        defaultValue=\"password\"\r\n        items={[\r\n          { value: \"account\", label: \"Account\", content: <p className=\"text-sm\">Account content.</p> },\r\n          { value: \"password\", label: \"Password\", content: <p className=\"text-sm\">Password content — active by default.</p> },\r\n          { value: \"notifications\", label: \"Notifications\", content: <p className=\"text-sm\">Notifications content.</p> },\r\n        ]}\r\n      />"
+        },
+        {
+          "name": "WithDisabledTab",
+          "storyId": "components-tabs--with-disabled-tab",
+          "jsx": "<Tabs\r\n        items={[\r\n          { value: \"active\", label: \"Active\", content: <p className=\"text-sm\">Active tab content.</p> },\r\n          { value: \"disabled\", label: \"Disabled\", disabled: true, content: <p className=\"text-sm\">You cannot see this.</p> },\r\n          { value: \"other\", label: \"Other\", content: <p className=\"text-sm\">Other tab content.</p> },\r\n        ]}\r\n      />"
+        },
+        {
+          "name": "ManualComposition",
+          "storyId": "components-tabs--manual-composition",
+          "jsx": "<Tabs defaultValue=\"overview\">\r\n        <TabsList>\r\n          <TabsTrigger value=\"overview\">Overview</TabsTrigger>\r\n          <TabsTrigger value=\"analytics\">Analytics</TabsTrigger>\r\n        </TabsList>\r\n        <TabsContent value=\"overview\">\r\n          <p className=\"text-sm mt-4\">Overview content with custom layout.</p>\r\n        </TabsContent>\r\n        <TabsContent value=\"analytics\">\r\n          <p className=\"text-sm mt-4\">Analytics content with custom layout.</p>\r\n        </TabsContent>\r\n      </Tabs>"
+        },
+        {
+          "name": "ManyTabs",
+          "storyId": "components-tabs--many-tabs",
+          "jsx": "<div style={{ width: \"320px\" }}>\r\n        <Tabs\r\n          items={[\r\n            { value: \"home\", label: \"Home\", content: <p className=\"text-sm mt-2\">Home content.</p> },\r\n            { value: \"profile\", label: \"Profile\", content: <p className=\"text-sm mt-2\">Profile content.</p> },\r\n            { value: \"settings\", label: \"Settings\", content: <p className=\"text-sm mt-2\">Settings content.</p> },\r\n            { value: \"notifications\", label: \"Notifications\", content: <p className=\"text-sm mt-2\">Notifications content.</p> },\r\n            { value: \"billing\", label: \"Billing\", content: <p className=\"text-sm mt-2\">Billing content.</p> },\r\n            { value: \"security\", label: \"Security\", content: <p className=\"text-sm mt-2\">Security content.</p> },\r\n          ]}\r\n        />\r\n      </div>"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [
+          "@radix-ui/react-tabs"
+        ],
+        "guarantees": [
+          "Role 'tablist', 'tab', and 'tabpanel' set by Radix.",
+          "Arrow key navigation between tabs.",
+          "aria-selected and aria-controls wired automatically.",
+          "Focus management handled by Radix."
+        ],
+        "requirements": [
+          "Ensure tab labels are unique and descriptive.",
+          "Do not put interactive controls inside tab panels that would conflict with arrow-key navigation."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/Tabs/Tabs.tsx"
+      },
+      "storybook": {
+        "titlePath": "Components/Tabs",
+        "stories": [
+          {
+            "key": "Default",
+            "id": "components-tabs--default"
+          },
+          {
+            "key": "WithDefaultValue",
+            "id": "components-tabs--with-default-value"
+          },
+          {
+            "key": "WithDisabledTab",
+            "id": "components-tabs--with-disabled-tab"
+          },
+          {
+            "key": "ManualComposition",
+            "id": "components-tabs--manual-composition"
+          },
+          {
+            "key": "ManyTabs",
+            "id": "components-tabs--many-tabs"
+          }
+        ]
+      },
+      "subcomponents": [
+        "TabsList",
+        "TabsTrigger",
+        "TabsContent"
+      ]
+    },
+    {
+      "name": "Sidebar",
+      "slug": "sidebar",
+      "description": "Application sidebar with header, scrollable content, footer, nav groups, and nav items. Supports mobile drawer mode.",
+      "category": "navigation",
+      "props": [
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "isOpen",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "onClose",
+          "type": "() => void",
+          "required": false
+        },
+        {
+          "name": "...HTMLDivAttributes",
+          "type": "spreads",
+          "required": false,
+          "description": "All standard HTML div element attributes are accepted."
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Default",
+          "storyId": "components-sidebar--default",
+          "jsx": "<Sidebar>\r\n        <SidebarHeader>\r\n          <span className=\"font-semibold\">My App</span>\r\n        </SidebarHeader>\r\n        <SidebarContent>\r\n          <SidebarNav>\r\n            <NavItem href=\"/home\" icon={<HomeIcon />} isActive>Home</NavItem>\r\n            <NavItem href=\"/settings\" icon={<SettingsIcon />}>Settings</NavItem>\r\n          </SidebarNav>\r\n        </SidebarContent>\r\n        <SidebarFooter>\r\n          <span className=\"text-sm text-muted-foreground\">v1.0.0</span>\r\n        </SidebarFooter>\r\n      </Sidebar>"
+        },
+        {
+          "name": "WithGroups",
+          "storyId": "components-sidebar--with-groups",
+          "jsx": "<Sidebar>\r\n        <SidebarHeader>\r\n          <span className=\"font-semibold\">Dashboard</span>\r\n        </SidebarHeader>\r\n        <SidebarContent>\r\n          <NavGroup\r\n            group={{\r\n              label: \"Main\",\r\n              items: [\r\n                { label: \"Home\", href: \"/home\", isActive: true, icon: <HomeIcon /> },\r\n                { label: \"Analytics\", href: \"/analytics\" },\r\n              ],\r\n            }}\r\n          />\r\n          <NavGroup\r\n            group={{\r\n              label: \"System\",\r\n              items: [\r\n                { label: \"Settings\", href: \"/settings\", icon: <SettingsIcon /> },\r\n                { label: \"Disabled\", href: \"/disabled\", disabled: true },\r\n              ],\r\n            }}\r\n          />\r\n        </SidebarContent>\r\n      </Sidebar>"
+        },
+        {
+          "name": "WithBadges",
+          "storyId": "components-sidebar--with-badges",
+          "jsx": "<Sidebar>\r\n        <SidebarHeader>\r\n          <span className=\"font-semibold\">My App</span>\r\n        </SidebarHeader>\r\n        <SidebarContent>\r\n          <SidebarNav>\r\n            <NavItem href=\"/home\" isActive>Home</NavItem>\r\n            <NavItem href=\"/inbox\" badge={5}>Inbox</NavItem>\r\n            <NavItem href=\"/notifications\" badge={99}>Notifications</NavItem>\r\n            <NavItem href=\"/archive\" badge={0}>Archive</NavItem>\r\n          </SidebarNav>\r\n        </SidebarContent>\r\n      </Sidebar>"
+        },
+        {
+          "name": "MobileDrawer",
+          "storyId": "components-sidebar--mobile-drawer",
+          "jsx": "{\r\n      const [isOpen, setIsOpen] = React.useState(false);\r\n      return (\r\n        <div style={{ height: \"500px\", position: \"relative\", overflow: \"hidden\" }}>\r\n          <button\r\n            onClick={() => setIsOpen(true)}\r\n            style={{ margin: \"16px\", padding: \"8px 16px\", border: \"1px solid #ccc\", borderRadius: \"4px\" }}\r\n          >\r\n            ☰ Open Sidebar\r\n          </button>\r\n          <Sidebar isOpen={isOpen} onClose={() => setIsOpen(false)}>\r\n            <SidebarHeader>\r\n              <span className=\"font-semibold\">My App</span>\r\n            </SidebarHeader>\r\n            <SidebarContent>\r\n              <SidebarNav>\r\n                <NavItem href=\"/home\" icon={<span>🏠</span>} isActive>Home</NavItem>\r\n                <NavItem href=\"/settings\" icon={<span>⚙️</span>}>Setti\n  {/* ... */}"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [],
+        "guarantees": [
+          "NavItem renders as an anchor element.",
+          "Active item is conveyed visually; use aria-current='page' for screen readers."
+        ],
+        "requirements": [
+          "Wrap the Sidebar in a <nav> landmark or provide aria-label='Main navigation'.",
+          "Set aria-current='page' (via isActive) on the current route's NavItem.",
+          "For mobile drawer mode, manage focus — move focus inside when opened, return on close."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/Sidebar/Sidebar.tsx"
+      },
+      "storybook": {
+        "titlePath": "Components/Sidebar",
+        "stories": [
+          {
+            "key": "Default",
+            "id": "components-sidebar--default"
+          },
+          {
+            "key": "WithGroups",
+            "id": "components-sidebar--with-groups"
+          },
+          {
+            "key": "WithBadges",
+            "id": "components-sidebar--with-badges"
+          },
+          {
+            "key": "MobileDrawer",
+            "id": "components-sidebar--mobile-drawer"
+          }
+        ]
+      },
+      "subcomponents": [
+        "SidebarHeader",
+        "SidebarContent",
+        "SidebarFooter",
+        "SidebarNav",
+        "NavItem",
+        "NavGroup"
+      ]
+    },
+    {
       "name": "Dialog",
       "slug": "dialog",
       "description": "Modal dialog primitive composed of Root, Trigger, Content, Header, Footer, Title, Description, and Close. Supports controlled and uncontrolled modes.",
@@ -507,6 +1884,1373 @@
         "DialogTitle",
         "DialogDescription"
       ]
+    },
+    {
+      "name": "ConfirmDialog",
+      "slug": "confirm-dialog",
+      "description": "Pre-built confirmation dialog with title, description, confirm/cancel buttons, loading state, and a destructive variant. Controlled-only (requires open + onOpenChange).",
+      "category": "overlay",
+      "props": [
+        {
+          "name": "ref",
+          "type": "Ref<HTMLDivElement>",
+          "required": false,
+          "description": "React 19 ref — pass directly, no forwardRef needed."
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "name": "onOpenChange",
+          "type": "(open: boolean) => void",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "onConfirm",
+          "type": "() => void",
+          "required": true
+        },
+        {
+          "name": "onCancel",
+          "type": "() => void",
+          "required": false
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "confirmLabel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "cancelLabel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "variant",
+          "type": "ConfirmDialogVariant",
+          "required": false
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Default",
+          "storyId": "components-confirmdialog--default",
+          "jsx": "<Controlled\n      title=\"Are you sure?\"\n      description=\"This will permanently remove the item. This action cannot be undone.\"\n    />"
+        },
+        {
+          "name": "Destructive",
+          "storyId": "components-confirmdialog--destructive",
+          "jsx": "<Controlled\n      title=\"Delete project\"\n      description=\"Deleting this project will remove all associated data, including tasks, files, and history. This cannot be reversed.\"\n      confirmLabel=\"Delete project\"\n      variant=\"destructive\"\n    />"
+        },
+        {
+          "name": "CustomLabels",
+          "storyId": "components-confirmdialog--custom-labels",
+          "jsx": "<Controlled\n      title=\"Publish changes\"\n      description=\"Your changes will be visible to all users immediately.\"\n      confirmLabel=\"Yes, publish\"\n      cancelLabel=\"Not yet\"\n    />"
+        },
+        {
+          "name": "Loading",
+          "storyId": "components-confirmdialog--loading",
+          "jsx": "<ConfirmDialog\n      open\n      onOpenChange={() => {}}\n      title=\"Deleting…\"\n      description=\"Please wait while the item is being deleted.\"\n      onConfirm={() => {}}\n      loading\n    />"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [
+          "@radix-ui/react-dialog"
+        ],
+        "guarantees": [
+          "Inherits all Dialog a11y guarantees: focus trap, Escape key, aria-modal.",
+          "loading=true disables confirm button and shows spinner."
+        ],
+        "requirements": [
+          "title and description are required — they become the accessible name and description of the dialog.",
+          "Use variant='destructive' for irreversible actions to signal danger visually."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/ConfirmDialog/ConfirmDialog.tsx"
+      },
+      "storybook": {
+        "titlePath": "Components/ConfirmDialog",
+        "stories": [
+          {
+            "key": "Default",
+            "id": "components-confirmdialog--default"
+          },
+          {
+            "key": "Destructive",
+            "id": "components-confirmdialog--destructive"
+          },
+          {
+            "key": "CustomLabels",
+            "id": "components-confirmdialog--custom-labels"
+          },
+          {
+            "key": "Loading",
+            "id": "components-confirmdialog--loading"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Alert",
+      "slug": "alert",
+      "description": "Static alert banner with five severity variants. Composed of Alert, AlertTitle, and AlertDescription.",
+      "category": "feedback",
+      "props": [
+        {
+          "name": "ref",
+          "type": "Ref<HTMLDivElement>",
+          "required": false,
+          "description": "React 19 ref — pass directly, no forwardRef needed."
+        },
+        {
+          "name": "variant",
+          "type": "AlertVariant",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "...HTMLDivAttributes",
+          "type": "spreads",
+          "required": false,
+          "description": "All standard HTML div element attributes are accepted."
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Default",
+          "storyId": "components-alert--default",
+          "jsx": "<Alert>\r\n        <AlertTitle>Heads up</AlertTitle>\r\n        <AlertDescription>You can change this in your settings.</AlertDescription>\r\n      </Alert>"
+        },
+        {
+          "name": "Info",
+          "storyId": "components-alert--info",
+          "jsx": "<Alert variant=\"info\">\r\n        <AlertTitle>Information</AlertTitle>\r\n        <AlertDescription>Your session will expire in 30 minutes.</AlertDescription>\r\n      </Alert>"
+        },
+        {
+          "name": "Success",
+          "storyId": "components-alert--success",
+          "jsx": "<Alert variant=\"success\">\r\n        <AlertTitle>Success</AlertTitle>\r\n        <AlertDescription>Your changes have been saved.</AlertDescription>\r\n      </Alert>"
+        },
+        {
+          "name": "Warning",
+          "storyId": "components-alert--warning",
+          "jsx": "<Alert variant=\"warning\">\r\n        <AlertTitle>Warning</AlertTitle>\r\n        <AlertDescription>This action may affect other users.</AlertDescription>\r\n      </Alert>"
+        },
+        {
+          "name": "Destructive",
+          "storyId": "components-alert--destructive",
+          "jsx": "<Alert variant=\"destructive\">\r\n        <AlertTitle>Error</AlertTitle>\r\n        <AlertDescription>Something went wrong. Please try again.</AlertDescription>\r\n      </Alert>"
+        },
+        {
+          "name": "AllVariants",
+          "storyId": "components-alert--all-variants",
+          "jsx": "<div style={{ display: \"flex\", flexDirection: \"column\", gap: \"12px\" }}>\r\n        {([\"default\", \"info\", \"success\", \"warning\", \"destructive\"] as const).map(\r\n          (variant) => (\r\n            <Alert key={variant} variant={variant}>\r\n              <AlertTitle>{variant}</AlertTitle>\r\n              <AlertDescription>Alert description for variant \"{variant}\".</AlertDescription>\r\n            </Alert>\r\n          )\r\n        )}\r\n      </div>"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [],
+        "guarantees": [
+          "Renders as a <div> with role='alert' for immediate announcement."
+        ],
+        "requirements": [
+          "For dynamic alerts injected after page load, role='alert' triggers a live-region announcement automatically.",
+          "For static alerts present on initial render, consider role='status' instead to avoid premature announcements.",
+          "Always include AlertTitle for context; AlertDescription is optional but recommended."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/Alert/Alert.tsx"
+      },
+      "storybook": {
+        "titlePath": "Components/Alert",
+        "stories": [
+          {
+            "key": "Default",
+            "id": "components-alert--default"
+          },
+          {
+            "key": "Info",
+            "id": "components-alert--info"
+          },
+          {
+            "key": "Success",
+            "id": "components-alert--success"
+          },
+          {
+            "key": "Warning",
+            "id": "components-alert--warning"
+          },
+          {
+            "key": "Destructive",
+            "id": "components-alert--destructive"
+          },
+          {
+            "key": "AllVariants",
+            "id": "components-alert--all-variants"
+          }
+        ]
+      },
+      "subcomponents": [
+        "AlertTitle",
+        "AlertDescription"
+      ]
+    },
+    {
+      "name": "Toast",
+      "slug": "toast",
+      "description": "Notification toast system built on Radix UI. Exposes a useToast hook and toast() helper for imperative triggering. Supports five variants and six position presets.",
+      "category": "feedback",
+      "props": [],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Default",
+          "storyId": "components-toast--default",
+          "jsx": "<button\r\n        onClick={() => toast({ title: \"Event has been created\" })}\r\n        className=\"rounded-md bg-primary px-4 py-2 text-sm text-primary-foreground\"\r\n      >\r\n        Show Toast\r\n      </button>"
+        },
+        {
+          "name": "WithDescription",
+          "storyId": "components-toast--with-description",
+          "jsx": "<button\r\n        onClick={() =>\r\n          toast({\r\n            title: \"Scheduled\",\r\n            description: \"Monday, January 20th at 9:00 AM\",\r\n          })\r\n        }\r\n        className=\"rounded-md bg-primary px-4 py-2 text-sm text-primary-foreground\"\r\n      >\r\n        Show Toast with Description\r\n      </button>"
+        },
+        {
+          "name": "Success",
+          "storyId": "components-toast--success",
+          "jsx": "<button\r\n        onClick={() =>\r\n          toast({ title: \"Changes saved\", description: \"Your profile has been updated.\", variant: \"success\" })\r\n        }\r\n        className=\"rounded-md bg-green-600 px-4 py-2 text-sm text-white\"\r\n      >\r\n        Show Success Toast\r\n      </button>"
+        },
+        {
+          "name": "Warning",
+          "storyId": "components-toast--warning",
+          "jsx": "<button\r\n        onClick={() =>\r\n          toast({ title: \"Storage almost full\", description: \"You have used 90% of your storage.\", variant: \"warning\" })\r\n        }\r\n        className=\"rounded-md bg-yellow-500 px-4 py-2 text-sm text-white\"\r\n      >\r\n        Show Warning Toast\r\n      </button>"
+        },
+        {
+          "name": "Info",
+          "storyId": "components-toast--info",
+          "jsx": "<button\r\n        onClick={() =>\r\n          toast({ title: \"New update available\", description: \"Refresh the page to get the latest version.\", variant: \"info\" })\r\n        }\r\n        className=\"rounded-md bg-blue-600 px-4 py-2 text-sm text-white\"\r\n      >\r\n        Show Info Toast\r\n      </button>"
+        },
+        {
+          "name": "Destructive",
+          "storyId": "components-toast--destructive",
+          "jsx": "<button\r\n        onClick={() =>\r\n          toast({ title: \"Something went wrong\", description: \"Please try again later.\", variant: \"destructive\" })\r\n        }\r\n        className=\"rounded-md bg-destructive px-4 py-2 text-sm text-destructive-foreground\"\r\n      >\r\n        Show Error Toast\r\n      </button>"
+        },
+        {
+          "name": "AllVariants",
+          "storyId": "components-toast--all-variants",
+          "jsx": "<div className=\"flex flex-wrap gap-2\">\r\n        {([\"default\", \"success\", \"warning\", \"info\", \"destructive\"] as const).map((variant) => (\r\n          <button\r\n            key={variant}\r\n            onClick={() => toast({ title: `${variant} toast`, description: \"This is a notification.\", variant })}\r\n            className=\"rounded-md border px-4 py-2 text-sm capitalize\"\r\n          >\r\n            {variant}\r\n          </button>\r\n        ))}\r\n      </div>"
+        },
+        {
+          "name": "Positions",
+          "storyId": "components-toast--positions",
+          "jsx": "<div className=\"flex flex-wrap gap-2\">\r\n        {([\"top-left\", \"top-center\", \"top-right\", \"bottom-left\", \"bottom-center\", \"bottom-right\"] as const).map(\r\n          (position) => (\r\n            <div key={position} className=\"flex flex-col items-center gap-1\">\r\n              <Toaster position={position} />\r\n              <button\r\n                onClick={() => toast({ title: position, description: \"Toast position demo.\" })}\r\n                className=\"rounded-md border px-3 py-1.5 text-xs\"\r\n              >\r\n                {position}\r\n              </button>\r\n            </div>\r\n          )\r\n        )}\r\n      </div>"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [
+          "@radix-ui/react-toast"
+        ],
+        "guarantees": [
+          "Toasts are announced by screen readers via an aria-live region.",
+          "Radix manages the live region — no manual ARIA needed.",
+          "Keyboard users can focus and dismiss toasts."
+        ],
+        "requirements": [
+          "Place <Toaster /> once at the app root, not per-page.",
+          "Keep toast messages brief and actionable.",
+          "Do not use toasts as the only means to convey critical errors — supplement with inline validation."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/Toast/Toast.tsx"
+      },
+      "storybook": {
+        "titlePath": "Components/Toast",
+        "stories": [
+          {
+            "key": "Default",
+            "id": "components-toast--default"
+          },
+          {
+            "key": "WithDescription",
+            "id": "components-toast--with-description"
+          },
+          {
+            "key": "Success",
+            "id": "components-toast--success"
+          },
+          {
+            "key": "Warning",
+            "id": "components-toast--warning"
+          },
+          {
+            "key": "Info",
+            "id": "components-toast--info"
+          },
+          {
+            "key": "Destructive",
+            "id": "components-toast--destructive"
+          },
+          {
+            "key": "AllVariants",
+            "id": "components-toast--all-variants"
+          },
+          {
+            "key": "Positions",
+            "id": "components-toast--positions"
+          }
+        ]
+      },
+      "subcomponents": [
+        "Toaster"
+      ]
+    },
+    {
+      "name": "Progress",
+      "slug": "progress",
+      "description": "Progress bar with four color variants and three size presets. Supports optional visible label and numeric value.",
+      "category": "feedback",
+      "props": [
+        {
+          "name": "ref",
+          "type": "Ref<HTMLDivElement>",
+          "required": false,
+          "description": "React 19 ref — pass directly, no forwardRef needed."
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "variant",
+          "type": "ProgressVariant",
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "ProgressSize",
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "showValue",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "...HTMLDivAttributes",
+          "type": "spreads",
+          "required": false,
+          "description": "All standard HTML div element attributes are accepted."
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Default",
+          "storyId": "components-progress--default",
+          "jsx": "<Progress value={60} />"
+        },
+        {
+          "name": "Sizes",
+          "storyId": "components-progress--sizes",
+          "jsx": "<div style={{ display: \"flex\", flexDirection: \"column\", gap: \"16px\" }}>\r\n        <Progress size=\"sm\" value={40} label=\"Small\" />\r\n        <Progress size=\"md\" value={60} label=\"Medium\" />\r\n        <Progress size=\"lg\" value={80} label=\"Large\" />\r\n      </div>"
+        },
+        {
+          "name": "Variants",
+          "storyId": "components-progress--variants",
+          "jsx": "<div style={{ display: \"flex\", flexDirection: \"column\", gap: \"16px\" }}>\r\n        <Progress variant=\"default\" value={60} label=\"Default\" />\r\n        <Progress variant=\"success\" value={100} label=\"Success\" />\r\n        <Progress variant=\"warning\" value={50} label=\"Warning\" />\r\n        <Progress variant=\"destructive\" value={30} label=\"Destructive\" />\r\n      </div>"
+        },
+        {
+          "name": "WithValue",
+          "storyId": "components-progress--with-value",
+          "jsx": "<Progress value={72} showValue />"
+        },
+        {
+          "name": "WithLabelAndValue",
+          "storyId": "components-progress--with-label-and-value",
+          "jsx": "<Progress value={45} label=\"Uploading...\" showValue />"
+        },
+        {
+          "name": "EdgeCases",
+          "storyId": "components-progress--edge-cases",
+          "jsx": "<div style={{ display: \"flex\", flexDirection: \"column\", gap: \"16px\" }}>\r\n        <Progress value={0} label=\"0%\" showValue />\r\n        <Progress value={100} label=\"Complete\" showValue />\r\n        <Progress value={150} label=\"Over 100 (clamped)\" showValue />\r\n      </div>"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [],
+        "guarantees": [
+          "Renders as a div with role='progressbar'.",
+          "aria-valuenow, aria-valuemin (0), and aria-valuemax (100) set from the value prop."
+        ],
+        "requirements": [
+          "Provide a label prop or aria-label so screen readers can identify what is progressing."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/Progress/Progress.tsx"
+      },
+      "storybook": {
+        "titlePath": "Components/Progress",
+        "stories": [
+          {
+            "key": "Default",
+            "id": "components-progress--default"
+          },
+          {
+            "key": "Sizes",
+            "id": "components-progress--sizes"
+          },
+          {
+            "key": "Variants",
+            "id": "components-progress--variants"
+          },
+          {
+            "key": "WithValue",
+            "id": "components-progress--with-value"
+          },
+          {
+            "key": "WithLabelAndValue",
+            "id": "components-progress--with-label-and-value"
+          },
+          {
+            "key": "EdgeCases",
+            "id": "components-progress--edge-cases"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EmptyState",
+      "slug": "empty-state",
+      "description": "Zero-state placeholder with optional icon, title, description, and a single call-to-action.",
+      "category": "feedback",
+      "props": [
+        {
+          "name": "icon",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "action",
+          "type": "EmptyStateAction",
+          "required": false
+        },
+        {
+          "name": "...HTMLDivAttributes",
+          "type": "spreads",
+          "required": false,
+          "description": "All standard HTML div element attributes are accepted."
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Default",
+          "storyId": "components-emptystate--default",
+          "jsx": "<div style={{ border: \"1px dashed #e2e8f0\", borderRadius: \"8px\" }}>\n      <EmptyState title=\"No items yet\" />\n    </div>"
+        },
+        {
+          "name": "WithDescription",
+          "storyId": "components-emptystate--with-description",
+          "jsx": "<div style={{ border: \"1px dashed #e2e8f0\", borderRadius: \"8px\" }}>\n      <EmptyState\n        title=\"Your inbox is empty\"\n        description=\"Messages from your team will appear here once they've been sent.\"\n      />\n    </div>"
+        },
+        {
+          "name": "WithIcon",
+          "storyId": "components-emptystate--with-icon",
+          "jsx": "<div style={{ border: \"1px dashed #e2e8f0\", borderRadius: \"8px\" }}>\n      <EmptyState\n        icon={<InboxIcon />}\n        title=\"Your inbox is empty\"\n        description=\"Messages from your team will appear here once they've been sent.\"\n      />\n    </div>"
+        },
+        {
+          "name": "WithAction",
+          "storyId": "components-emptystate--with-action",
+          "jsx": "<div style={{ border: \"1px dashed #e2e8f0\", borderRadius: \"8px\" }}>\n      <EmptyState\n        icon={<SearchIcon />}\n        title=\"No results found\"\n        description=\"Try adjusting your search or filters to find what you're looking for.\"\n        action={{ label: \"Clear filters\", onClick: () => {} }}\n      />\n    </div>"
+        },
+        {
+          "name": "Full",
+          "storyId": "components-emptystate--full",
+          "jsx": "<div\n      style={{\n        border: \"1px solid #e2e8f0\",\n        borderRadius: \"8px\",\n        maxWidth: \"480px\",\n      }}\n    >\n      <EmptyState\n        icon={<InboxIcon />}\n        title=\"Nothing here yet\"\n        description=\"Create your first item to get started. It only takes a few seconds.\"\n        action={{ label: \"Create item\", onClick: () => {} }}\n      />\n    </div>"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [],
+        "guarantees": [],
+        "requirements": [
+          "title is required — it must describe the empty state meaningfully.",
+          "If the action replaces in-page navigation, ensure the onClick handler is keyboard-accessible."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/EmptyState/EmptyState.tsx"
+      },
+      "storybook": {
+        "titlePath": "Components/EmptyState",
+        "stories": [
+          {
+            "key": "Default",
+            "id": "components-emptystate--default"
+          },
+          {
+            "key": "WithDescription",
+            "id": "components-emptystate--with-description"
+          },
+          {
+            "key": "WithIcon",
+            "id": "components-emptystate--with-icon"
+          },
+          {
+            "key": "WithAction",
+            "id": "components-emptystate--with-action"
+          },
+          {
+            "key": "Full",
+            "id": "components-emptystate--full"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Card",
+      "slug": "card",
+      "description": "Composable card container with Header, Title, Description, Content, and Footer sub-components. Supports three style variants.",
+      "category": "display",
+      "props": [
+        {
+          "name": "ref",
+          "type": "Ref<HTMLDivElement>",
+          "required": false,
+          "description": "React 19 ref — pass directly, no forwardRef needed."
+        },
+        {
+          "name": "variant",
+          "type": "CardVariant",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "...HTMLDivAttributes",
+          "type": "spreads",
+          "required": false,
+          "description": "All standard HTML div element attributes are accepted."
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Default",
+          "storyId": "components-card--default",
+          "jsx": "<Card>\r\n        <CardHeader>\r\n          <CardTitle>Card Title</CardTitle>\r\n          <CardDescription>Card description goes here.</CardDescription>\r\n        </CardHeader>\r\n        <CardContent>\r\n          <p>This is the card body content.</p>\r\n        </CardContent>\r\n        <CardFooter>\r\n          <Button size=\"sm\">Action</Button>\r\n        </CardFooter>\r\n      </Card>"
+        },
+        {
+          "name": "Outline",
+          "storyId": "components-card--outline",
+          "jsx": "<Card variant=\"outline\">\r\n        <CardHeader>\r\n          <CardTitle>Outline Card</CardTitle>\r\n          <CardDescription>Uses a thicker border, no shadow.</CardDescription>\r\n        </CardHeader>\r\n        <CardContent>\r\n          <p>Content inside an outline card.</p>\r\n        </CardContent>\r\n      </Card>"
+        },
+        {
+          "name": "Ghost",
+          "storyId": "components-card--ghost",
+          "jsx": "<Card variant=\"ghost\">\r\n        <CardHeader>\r\n          <CardTitle>Ghost Card</CardTitle>\r\n          <CardDescription>Transparent background, no border.</CardDescription>\r\n        </CardHeader>\r\n        <CardContent>\r\n          <p>Content inside a ghost card.</p>\r\n        </CardContent>\r\n      </Card>"
+        },
+        {
+          "name": "WithCustomPadding",
+          "storyId": "components-card--with-custom-padding",
+          "jsx": "<Card>\r\n        <CardHeader>\r\n          <CardTitle>Custom Padding</CardTitle>\r\n        </CardHeader>\r\n        <CardContent padding={2}>\r\n          <p>CardContent with tight padding via the padding prop.</p>\r\n        </CardContent>\r\n      </Card>"
+        },
+        {
+          "name": "HeaderOnly",
+          "storyId": "components-card--header-only",
+          "jsx": "<Card>\r\n        <CardHeader>\r\n          <CardTitle>Header Only</CardTitle>\r\n          <CardDescription>No content or footer.</CardDescription>\r\n        </CardHeader>\r\n      </Card>"
+        },
+        {
+          "name": "AllVariants",
+          "storyId": "components-card--all-variants",
+          "jsx": "<div style={{ display: \"flex\", flexDirection: \"column\", gap: \"16px\" }}>\r\n        {([\"default\", \"outline\", \"ghost\"] as const).map((variant) => (\r\n          <Card key={variant} variant={variant}>\r\n            <CardHeader>\r\n              <CardTitle>{variant}</CardTitle>\r\n              <CardDescription>variant=\"{variant}\"</CardDescription>\r\n            </CardHeader>\r\n            <CardContent>\r\n              <p>Card body content.</p>\r\n            </CardContent>\r\n          </Card>\r\n        ))}\r\n      </div>"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [],
+        "guarantees": [],
+        "requirements": [
+          "Use CardTitle inside a semantically appropriate heading element (h2/h3) when cards appear in a list.",
+          "For interactive cards (clickable), use a wrapping <a> or <button> rather than an onClick on Card."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/Card/Card.tsx"
+      },
+      "storybook": {
+        "titlePath": "Components/Card",
+        "stories": [
+          {
+            "key": "Default",
+            "id": "components-card--default"
+          },
+          {
+            "key": "Outline",
+            "id": "components-card--outline"
+          },
+          {
+            "key": "Ghost",
+            "id": "components-card--ghost"
+          },
+          {
+            "key": "WithCustomPadding",
+            "id": "components-card--with-custom-padding"
+          },
+          {
+            "key": "HeaderOnly",
+            "id": "components-card--header-only"
+          },
+          {
+            "key": "AllVariants",
+            "id": "components-card--all-variants"
+          }
+        ]
+      },
+      "subcomponents": [
+        "CardHeader",
+        "CardTitle",
+        "CardDescription",
+        "CardContent",
+        "CardFooter"
+      ]
+    },
+    {
+      "name": "Badge",
+      "slug": "badge",
+      "description": "Inline status badge with six color variants including success and warning.",
+      "category": "display",
+      "props": [
+        {
+          "name": "variant",
+          "type": "BadgeVariant",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "...HTMLDivAttributes",
+          "type": "spreads",
+          "required": false,
+          "description": "All standard HTML div element attributes are accepted."
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Default",
+          "storyId": "components-badge--default",
+          "jsx": "<Badge>Default</Badge>"
+        },
+        {
+          "name": "Secondary",
+          "storyId": "components-badge--secondary",
+          "jsx": "<Badge variant=\"secondary\">Secondary</Badge>"
+        },
+        {
+          "name": "Destructive",
+          "storyId": "components-badge--destructive",
+          "jsx": "<Badge variant=\"destructive\">Destructive</Badge>"
+        },
+        {
+          "name": "Outline",
+          "storyId": "components-badge--outline",
+          "jsx": "<Badge variant=\"outline\">Outline</Badge>"
+        },
+        {
+          "name": "Success",
+          "storyId": "components-badge--success",
+          "jsx": "<Badge variant=\"success\">Success</Badge>"
+        },
+        {
+          "name": "Warning",
+          "storyId": "components-badge--warning",
+          "jsx": "<Badge variant=\"warning\">Warning</Badge>"
+        },
+        {
+          "name": "AllVariants",
+          "storyId": "components-badge--all-variants",
+          "jsx": "<div style={{ display: \"flex\", gap: \"8px\", flexWrap: \"wrap\" }}>\r\n        {([\"default\", \"secondary\", \"destructive\", \"outline\", \"success\", \"warning\"] as const).map(\r\n          (variant) => (\r\n            <Badge key={variant} variant={variant}>\r\n              {variant}\r\n            </Badge>\r\n          )\r\n        )}\r\n      </div>"
+        },
+        {
+          "name": "WithCustomClass",
+          "storyId": "components-badge--with-custom-class",
+          "jsx": "<Badge className=\"uppercase tracking-widest\">custom</Badge>"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [],
+        "guarantees": [],
+        "requirements": [
+          "Badge is decorative text — ensure adjacent context conveys the same status for screen readers if the color is the only differentiator.",
+          "For status badges that change dynamically, wrap in an aria-live region."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/Badge/Badge.tsx"
+      },
+      "storybook": {
+        "titlePath": "Components/Badge",
+        "stories": [
+          {
+            "key": "Default",
+            "id": "components-badge--default"
+          },
+          {
+            "key": "Secondary",
+            "id": "components-badge--secondary"
+          },
+          {
+            "key": "Destructive",
+            "id": "components-badge--destructive"
+          },
+          {
+            "key": "Outline",
+            "id": "components-badge--outline"
+          },
+          {
+            "key": "Success",
+            "id": "components-badge--success"
+          },
+          {
+            "key": "Warning",
+            "id": "components-badge--warning"
+          },
+          {
+            "key": "AllVariants",
+            "id": "components-badge--all-variants"
+          },
+          {
+            "key": "WithCustomClass",
+            "id": "components-badge--with-custom-class"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Avatar",
+      "slug": "avatar",
+      "description": "User avatar with image, text fallback, and five size presets. Built on Radix UI Avatar.",
+      "category": "display",
+      "props": [
+        {
+          "name": "src",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "alt",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "fallback",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "AvatarSize",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "...HTMLSpanAttributes",
+          "type": "spreads",
+          "required": false,
+          "description": "All standard HTML span element attributes are accepted."
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "WithImage",
+          "storyId": "components-avatar--with-image",
+          "jsx": "<Avatar\r\n        src=\"https://github.com/shadcn.png\"\r\n        alt=\"shadcn\"\r\n        fallback=\"SC\"\r\n      />"
+        },
+        {
+          "name": "WithFallback",
+          "storyId": "components-avatar--with-fallback",
+          "jsx": "<Avatar fallback=\"JD\" alt=\"John Doe\" />"
+        },
+        {
+          "name": "BrokenImage",
+          "storyId": "components-avatar--broken-image",
+          "jsx": "<Avatar\r\n        src=\"https://broken.url/avatar.jpg\"\r\n        alt=\"Broken\"\r\n        fallback=\"BR\"\r\n      />"
+        },
+        {
+          "name": "Sizes",
+          "storyId": "components-avatar--sizes",
+          "jsx": "<div style={{ display: \"flex\", alignItems: \"center\", gap: \"12px\" }}>\r\n        {([\"xs\", \"sm\", \"md\", \"lg\", \"xl\"] as const).map((size) => (\r\n          <Avatar key={size} size={size} fallback=\"JD\" alt=\"John Doe\" />\r\n        ))}\r\n      </div>"
+        },
+        {
+          "name": "WithCustomClass",
+          "storyId": "components-avatar--with-custom-class",
+          "jsx": "<Avatar fallback=\"AB\" alt=\"Custom\" className=\"ring-2 ring-primary\" />"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [
+          "@radix-ui/react-avatar"
+        ],
+        "guarantees": [
+          "Falls back gracefully from image → initials when image fails to load.",
+          "Radix manages the image/fallback swap without layout shift."
+        ],
+        "requirements": [
+          "Provide alt text when the image conveys meaningful identity (e.g. user photo in a profile).",
+          "For purely decorative avatars (e.g. in a list with a name alongside), use alt='' to mark as presentational."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/Avatar/Avatar.tsx"
+      },
+      "storybook": {
+        "titlePath": "Components/Avatar",
+        "stories": [
+          {
+            "key": "WithImage",
+            "id": "components-avatar--with-image"
+          },
+          {
+            "key": "WithFallback",
+            "id": "components-avatar--with-fallback"
+          },
+          {
+            "key": "BrokenImage",
+            "id": "components-avatar--broken-image"
+          },
+          {
+            "key": "Sizes",
+            "id": "components-avatar--sizes"
+          },
+          {
+            "key": "WithCustomClass",
+            "id": "components-avatar--with-custom-class"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StatCard",
+      "slug": "stat-card",
+      "description": "KPI stat card showing a metric label, value, optional change percentage with trend indicator, and optional icon.",
+      "category": "display",
+      "props": [
+        {
+          "name": "label",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "value",
+          "type": "string | number",
+          "required": true
+        },
+        {
+          "name": "change",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "trend",
+          "type": "StatTrend",
+          "required": false
+        },
+        {
+          "name": "icon",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Default",
+          "storyId": "components-statcard--default",
+          "jsx": "<div style={{ width: \"280px\" }}>\r\n        <StatCard label=\"Total Revenue\" value=\"$45,231\" />\r\n      </div>"
+        },
+        {
+          "name": "WithTrendUp",
+          "storyId": "components-statcard--with-trend-up",
+          "jsx": "<div style={{ width: \"280px\" }}>\r\n        <StatCard\r\n          label=\"Total Revenue\"\r\n          value=\"$45,231\"\r\n          change=\"+20.1% from last month\"\r\n          trend=\"up\"\r\n        />\r\n      </div>"
+        },
+        {
+          "name": "WithTrendDown",
+          "storyId": "components-statcard--with-trend-down",
+          "jsx": "<div style={{ width: \"280px\" }}>\r\n        <StatCard\r\n          label=\"Churn Rate\"\r\n          value=\"3.2%\"\r\n          change=\"+0.4% from last month\"\r\n          trend=\"down\"\r\n        />\r\n      </div>"
+        },
+        {
+          "name": "WithTrendNeutral",
+          "storyId": "components-statcard--with-trend-neutral",
+          "jsx": "<div style={{ width: \"280px\" }}>\r\n        <StatCard\r\n          label=\"Active Sessions\"\r\n          value=\"1,024\"\r\n          change=\"no change\"\r\n          trend=\"neutral\"\r\n        />\r\n      </div>"
+        },
+        {
+          "name": "WithIcon",
+          "storyId": "components-statcard--with-icon",
+          "jsx": "<div style={{ width: \"280px\" }}>\r\n        <StatCard\r\n          label=\"Total Users\"\r\n          value=\"12,456\"\r\n          change=\"+180 this week\"\r\n          trend=\"up\"\r\n          icon={\r\n            <svg\r\n              xmlns=\"http://www.w3.org/2000/svg\"\r\n              width=\"20\"\r\n              height=\"20\"\r\n              viewBox=\"0 0 24 24\"\r\n              fill=\"none\"\r\n              stroke=\"currentColor\"\r\n              strokeWidth=\"2\"\r\n            >\r\n              <path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\" />\r\n              <circle cx=\"9\" cy=\"7\" r=\"4\" />\r\n              <path d=\"M22 21v-2a4 4 0 0 0-3-3.87\" />\r\n              <path d=\"M16 3.13a4 4 0 0 1 0 7.75\" />\r\n            </svg>\r\n          }\r\n        />\r\n      </div>"
+        },
+        {
+          "name": "Dashboard",
+          "storyId": "components-statcard--dashboard",
+          "jsx": "<div style={{ display: \"grid\", gridTemplateColumns: \"repeat(3, 280px)\", gap: \"16px\" }}>\r\n        <StatCard label=\"Total Revenue\" value=\"$45,231\" change=\"+20.1%\" trend=\"up\" />\r\n        <StatCard label=\"Subscriptions\" value=\"+2,350\" change=\"+180 this month\" trend=\"up\" />\r\n        <StatCard label=\"Churn Rate\" value=\"3.2%\" change=\"+0.4%\" trend=\"down\" />\r\n      </div>"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [],
+        "guarantees": [],
+        "requirements": [
+          "label and value are required — both are exposed as visible text.",
+          "Trend icons are decorative — ensure the change text alone conveys the direction (e.g. '+12%' rather than relying on arrow color)."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/StatCard/StatCard.tsx"
+      },
+      "storybook": {
+        "titlePath": "Components/StatCard",
+        "stories": [
+          {
+            "key": "Default",
+            "id": "components-statcard--default"
+          },
+          {
+            "key": "WithTrendUp",
+            "id": "components-statcard--with-trend-up"
+          },
+          {
+            "key": "WithTrendDown",
+            "id": "components-statcard--with-trend-down"
+          },
+          {
+            "key": "WithTrendNeutral",
+            "id": "components-statcard--with-trend-neutral"
+          },
+          {
+            "key": "WithIcon",
+            "id": "components-statcard--with-icon"
+          },
+          {
+            "key": "Dashboard",
+            "id": "components-statcard--dashboard"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Table",
+      "slug": "table",
+      "description": "Data table built on TanStack Table v8. Table provides a static view; DataTable adds client-side sorting. Both accept a columns definition and a data array.",
+      "category": "data",
+      "props": [
+        {
+          "name": "columns",
+          "type": "ColumnDef<TData>[]",
+          "required": true
+        },
+        {
+          "name": "data",
+          "type": "TData[]",
+          "required": true
+        },
+        {
+          "name": "caption",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Default",
+          "storyId": "components-table--default",
+          "jsx": "<Table columns={personColumns} data={people} />"
+        },
+        {
+          "name": "WithCaption",
+          "storyId": "components-table--with-caption",
+          "jsx": "<Table columns={personColumns} data={people} caption=\"Team members\" />"
+        },
+        {
+          "name": "EmptyState",
+          "storyId": "components-table--empty-state",
+          "jsx": "<Table columns={personColumns} data={[]} />"
+        },
+        {
+          "name": "Sortable",
+          "storyId": "components-table--sortable",
+          "jsx": "<DataTable\r\n        columns={personColumns}\r\n        data={people}\r\n        caption=\"Click column headers to sort\"\r\n      />"
+        },
+        {
+          "name": "SortableWithDefaultSort",
+          "storyId": "components-table--sortable-with-default-sort",
+          "jsx": "<DataTable\r\n        columns={personColumns}\r\n        data={people}\r\n        defaultSorting={[{ id: \"name\", desc: false }]}\r\n      />"
+        },
+        {
+          "name": "ResponsiveColumns",
+          "storyId": "components-table--responsive-columns",
+          "jsx": "<Table\r\n        caption=\"Resize the window — Role and Joined columns hide below sm breakpoint\"\r\n        columns={[\r\n          { accessorKey: \"name\", header: \"Name\" },\r\n          { accessorKey: \"role\", header: \"Role\", meta: { hideBelow: \"sm\" } },\r\n          { accessorKey: \"status\", header: \"Status\" },\r\n          { accessorKey: \"joined\", header: \"Joined\", meta: { hideBelow: \"sm\" } },\r\n        ]}\r\n        data={people}\r\n      />"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [],
+        "guarantees": [
+          "Renders a semantic <table> element with <thead>, <tbody>.",
+          "Sortable column headers use <button> inside <th>."
+        ],
+        "requirements": [
+          "Provide a caption prop — it becomes the accessible table name read by screen readers.",
+          "Column headers (ColumnDef.header) must be descriptive strings or accessible ReactNodes.",
+          "For complex cell renderers, ensure cell content has accessible text."
+        ]
+      },
+      "peerRequirements": [
+        "@tanstack/react-table"
+      ],
+      "source": {
+        "path": "src/components/Table/Table.tsx"
+      },
+      "storybook": {
+        "titlePath": "Components/Table",
+        "stories": [
+          {
+            "key": "Default",
+            "id": "components-table--default"
+          },
+          {
+            "key": "WithCaption",
+            "id": "components-table--with-caption"
+          },
+          {
+            "key": "EmptyState",
+            "id": "components-table--empty-state"
+          },
+          {
+            "key": "Sortable",
+            "id": "components-table--sortable"
+          },
+          {
+            "key": "SortableWithDefaultSort",
+            "id": "components-table--sortable-with-default-sort"
+          },
+          {
+            "key": "ResponsiveColumns",
+            "id": "components-table--responsive-columns"
+          }
+        ]
+      },
+      "subcomponents": [
+        "DataTable"
+      ]
+    },
+    {
+      "name": "DonutChart",
+      "slug": "donut-chart",
+      "description": "SVG donut chart with optional center text, subtext, and legend. Renders segments from a data array with explicit colors.",
+      "category": "charts",
+      "props": [
+        {
+          "name": "segments",
+          "type": "DonutSegment[]",
+          "required": true
+        },
+        {
+          "name": "centerText",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "centerSubtext",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "strokeWidth",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "showLegend",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "...HTMLDivAttributes",
+          "type": "spreads",
+          "required": false,
+          "description": "All standard HTML div element attributes are accepted."
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Default",
+          "storyId": "components-donutchart--default",
+          "jsx": "<DonutChart segments={segments} />"
+        },
+        {
+          "name": "WithCenterText",
+          "storyId": "components-donutchart--with-center-text",
+          "jsx": "<DonutChart segments={segments} centerText=\"72%\" centerSubtext=\"Score\" />"
+        },
+        {
+          "name": "WithLegend",
+          "storyId": "components-donutchart--with-legend",
+          "jsx": "<DonutChart segments={segments} showLegend />"
+        },
+        {
+          "name": "WithCenterTextAndLegend",
+          "storyId": "components-donutchart--with-center-text-and-legend",
+          "jsx": "<DonutChart\n      segments={segments}\n      centerText=\"100\"\n      centerSubtext=\"Total\"\n      showLegend\n    />"
+        },
+        {
+          "name": "TwoSegments",
+          "storyId": "components-donutchart--two-segments",
+          "jsx": "<DonutChart\n      segments={[\n        { label: \"Complete\", value: 73, color: \"#10b981\" },\n        { label: \"Remaining\", value: 27, color: \"#e5e7eb\" },\n      ]}\n      centerText=\"73%\"\n      centerSubtext=\"Complete\"\n      size={120}\n      strokeWidth={16}\n    />"
+        },
+        {
+          "name": "Large",
+          "storyId": "components-donutchart--large",
+          "jsx": "<DonutChart segments={segments} size={240} strokeWidth={32} showLegend />"
+        },
+        {
+          "name": "Empty",
+          "storyId": "components-donutchart--empty",
+          "jsx": "<DonutChart segments={[]} />"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [],
+        "guarantees": [],
+        "requirements": [
+          "SVG charts are not accessible by default — provide a visually hidden <table> or aria-label describing the data as a text alternative.",
+          "showLegend=true improves comprehension but is not a substitute for text alternatives.",
+          "Segment colors must meet 3:1 contrast ratio against the background to distinguish between segments."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/DonutChart/DonutChart.tsx"
+      },
+      "storybook": {
+        "titlePath": "Components/DonutChart",
+        "stories": [
+          {
+            "key": "Default",
+            "id": "components-donutchart--default"
+          },
+          {
+            "key": "WithCenterText",
+            "id": "components-donutchart--with-center-text"
+          },
+          {
+            "key": "WithLegend",
+            "id": "components-donutchart--with-legend"
+          },
+          {
+            "key": "WithCenterTextAndLegend",
+            "id": "components-donutchart--with-center-text-and-legend"
+          },
+          {
+            "key": "TwoSegments",
+            "id": "components-donutchart--two-segments"
+          },
+          {
+            "key": "Large",
+            "id": "components-donutchart--large"
+          },
+          {
+            "key": "Empty",
+            "id": "components-donutchart--empty"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AreaChart",
+      "slug": "area-chart",
+      "description": "SVG area chart supporting single and multi-series data. Configurable height, grid lines, and legend.",
+      "category": "charts",
+      "props": [
+        {
+          "name": "data",
+          "type": "DataPoint[]",
+          "required": true
+        },
+        {
+          "name": "series",
+          "type": "AreaSeries[]",
+          "required": true
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "showGrid",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "showLegend",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "...HTMLDivAttributes",
+          "type": "spreads",
+          "required": false,
+          "description": "All standard HTML div element attributes are accepted."
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Default",
+          "storyId": "components-areachart--default",
+          "jsx": "<div style={{ width: \"600px\" }}>\n      <AreaChart\n        data={monthlyData}\n        series={[{ key: \"revenue\", name: \"Revenue\", color: \"#3b82f6\" }]}\n      />\n    </div>"
+        },
+        {
+          "name": "MultiSeries",
+          "storyId": "components-areachart--multi-series",
+          "jsx": "<div style={{ width: \"600px\" }}>\n      <AreaChart\n        data={monthlyData}\n        series={[\n          { key: \"revenue\", name: \"Revenue\", color: \"#3b82f6\" },\n          { key: \"users\", name: \"Users\", color: \"#10b981\" },\n        ]}\n      />\n    </div>"
+        },
+        {
+          "name": "NoGrid",
+          "storyId": "components-areachart--no-grid",
+          "jsx": "<div style={{ width: \"600px\" }}>\n      <AreaChart\n        data={monthlyData}\n        series={[{ key: \"revenue\", name: \"Revenue\", color: \"#8b5cf6\" }]}\n        showGrid={false}\n      />\n    </div>"
+        },
+        {
+          "name": "NoLegend",
+          "storyId": "components-areachart--no-legend",
+          "jsx": "<div style={{ width: \"600px\" }}>\n      <AreaChart\n        data={monthlyData}\n        series={[{ key: \"revenue\", name: \"Revenue\", color: \"#f59e0b\" }]}\n        showLegend={false}\n      />\n    </div>"
+        },
+        {
+          "name": "Compact",
+          "storyId": "components-areachart--compact",
+          "jsx": "<div style={{ width: \"400px\" }}>\n      <AreaChart\n        data={monthlyData}\n        series={[{ key: \"revenue\", name: \"Revenue\", color: \"#ef4444\" }]}\n        height={140}\n        showLegend={false}\n      />\n    </div>"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [],
+        "guarantees": [],
+        "requirements": [
+          "SVG charts are not accessible by default — provide a visually hidden data table or aria-label as a text alternative.",
+          "Series colors must be distinguishable without relying on color alone (pair with patterns or labels for color-blind users).",
+          "showLegend=true helps sighted users but add sr-only text for screen reader users too."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/AreaChart/AreaChart.tsx"
+      },
+      "storybook": {
+        "titlePath": "Components/AreaChart",
+        "stories": [
+          {
+            "key": "Default",
+            "id": "components-areachart--default"
+          },
+          {
+            "key": "MultiSeries",
+            "id": "components-areachart--multi-series"
+          },
+          {
+            "key": "NoGrid",
+            "id": "components-areachart--no-grid"
+          },
+          {
+            "key": "NoLegend",
+            "id": "components-areachart--no-legend"
+          },
+          {
+            "key": "Compact",
+            "id": "components-areachart--compact"
+          }
+        ]
+      }
     }
   ]
 }

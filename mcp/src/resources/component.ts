@@ -48,7 +48,11 @@ export function renderComponentMarkdown(slug: string): string | null {
 }
 
 /** Render an iframe-based component preview */
-export function renderPreviewHtml(storyId: string, componentName: string): string {
+export function renderPreviewHtml(
+  storyId: string,
+  componentName: string,
+  height = 420
+): string {
   const url = `${GH_PAGES_BASE}?id=${encodeURIComponent(storyId)}&viewMode=story`;
   return `<!DOCTYPE html>
 <html lang="en">
@@ -59,7 +63,7 @@ export function renderPreviewHtml(storyId: string, componentName: string): strin
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #fafafa; font-family: sans-serif; }
-    iframe { display: block; width: 100%; height: 420px; border: none; }
+    iframe { display: block; width: 100%; height: ${height}px; border: none; }
     .toolbar {
       display: flex; align-items: center; gap: 8px;
       padding: 6px 12px; background: #fff;

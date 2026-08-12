@@ -22,8 +22,24 @@ const REPO_ROOT = resolve(__dirname, "../..");
 const MCP_ROOT = resolve(__dirname, "..");
 const SRC_COMPONENTS = join(REPO_ROOT, "src", "components");
 
-// Phase 1 components. Add to this list for Phase 2+.
-const PHASE_1_COMPONENTS = ["Button", "Input", "Dialog"] as const;
+const COMPONENTS = [
+  // form
+  "Button", "Input", "Textarea", "Checkbox", "Select",
+  // layout
+  "Box", "Stack", "Grid", "Container", "PageHeader",
+  // navigation
+  "Breadcrumb", "Tabs", "Sidebar",
+  // overlay
+  "Dialog", "ConfirmDialog",
+  // feedback
+  "Alert", "Toast", "Progress", "EmptyState",
+  // display
+  "Card", "Badge", "Avatar", "StatCard",
+  // data
+  "Table",
+  // charts
+  "DonutChart", "AreaChart",
+] as const;
 
 // React built-in type names to stop recursion at (don't expand HTML attrs)
 const REACT_STOP_TYPES = new Set([
@@ -456,7 +472,7 @@ async function main() {
 
   const components: Component[] = [];
 
-  for (const name of PHASE_1_COMPONENTS) {
+  for (const name of COMPONENTS) {
     console.log(`Extracting ${name}...`);
     const override = OVERRIDES[name];
     if (!override) throw new Error(`Missing override entry for ${name}`);
@@ -474,13 +490,30 @@ async function main() {
       props = extractPropsFromInterface(typesFile, primaryInterface, project);
     }
 
-    // Add ref prop (all components accept ref as plain prop in React 19)
-    props.unshift({
-      name: "ref",
-      type: `Ref<HTML${name === "Dialog" ? "Div" : name === "Input" ? "Input" : "Button"}Element>`,
-      required: false,
-      description: "React 19 ref — pass directly, no forwardRef needed.",
-    });
+    // Add ref prop for components that accept one (React 19 — plain prop, no forwardRef)
+    const refElementMap: Partial<Record<string, string>> = {
+      Button: "HTMLButtonElement",
+      Input: "HTMLInputElement",
+      Textarea: "HTMLTextAreaElement",
+      Checkbox: "HTMLButtonElement",
+      Select: "HTMLButtonElement",
+      Dialog: "HTMLDivElement",
+      ConfirmDialog: "HTMLDivElement",
+      Card: "HTMLDivElement",
+      Box: "HTMLElement",
+      Container: "HTMLDivElement",
+      Alert: "HTMLDivElement",
+      Progress: "HTMLDivElement",
+    };
+    const refEl = refElementMap[name];
+    if (refEl) {
+      props.unshift({
+        name: "ref",
+        type: `Ref<${refEl}>`,
+        required: false,
+        description: "React 19 ref — pass directly, no forwardRef needed.",
+      });
+    }
 
     // Variants + examples from stories
     let variants: Variant[] = [];

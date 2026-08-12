@@ -24,15 +24,18 @@ beforeAll(async () => {
 // ── Tool: list_components ─────────────────────────────────────────────────────
 
 describe("list_components tool", () => {
-  it("returns the tool in the tools list", async () => {
+  it("returns all 6 tools in the tools list", async () => {
     const { tools } = await client.listTools();
     const names = tools.map((t) => t.name);
     expect(names).toContain("list_components");
     expect(names).toContain("get_component");
     expect(names).toContain("get_example");
+    expect(names).toContain("search_components");
+    expect(names).toContain("check_props");
+    expect(names).toContain("preview_component");
   });
 
-  it("lists all Phase 1 components", async () => {
+  it("lists all 26 components", async () => {
     const res = await client.callTool({ name: "list_components", arguments: {} });
     const content = res.content[0];
     expect(content.type).toBe("text");
@@ -41,6 +44,9 @@ describe("list_components tool", () => {
     expect(names).toContain("Button");
     expect(names).toContain("Input");
     expect(names).toContain("Dialog");
+    expect(names).toContain("Select");
+    expect(names).toContain("DonutChart");
+    expect(data.totalComponents).toBeGreaterThanOrEqual(25);
   });
 
   it("filters by category", async () => {
@@ -135,6 +141,140 @@ describe("get_example tool", () => {
     const content = res.content[0] as { type: "text"; text: string };
     const data = JSON.parse(content.text);
     expect(data.allExamples.length).toBeGreaterThan(3);
+  });
+});
+
+// ── Tool: search_components ───────────────────────────────────────────────────
+
+describe("search_components tool", () => {
+  it("finds form components by keyword", async () => {
+    const res = await client.callTool({
+      name: "search_components",
+      arguments: { query: "form input" },
+    });
+    const data = JSON.parse((res.content[0] as { text: string }).text);
+    expect(data.found).toBeGreaterThan(0);
+    const names = data.results.map((r: { name: string }) => r.name);
+    expect(names.some((n: string) => ["Input", "Textarea", "Checkbox"].includes(n))).toBe(true);
+  });
+
+  it("finds overlay components", async () => {
+    const res = await client.callTool({
+      name: "search_components",
+      arguments: { query: "modal dialog" },
+    });
+    const data = JSON.parse((res.content[0] as { text: string }).text);
+    expect(data.results.some((r: { name: string }) => r.name === "Dialog")).toBe(true);
+  });
+
+  it("returns hint on no results", async () => {
+    const res = await client.callTool({
+      name: "search_components",
+      arguments: { query: "zzznomatch999" },
+    });
+    const data = JSON.parse((res.content[0] as { text: string }).text);
+    expect(data.found).toBe(0);
+    expect(data.hint).toBeTruthy();
+  });
+
+  it("respects limit", async () => {
+    const res = await client.callTool({
+      name: "search_components",
+      arguments: { query: "component", limit: 2 },
+    });
+    const data = JSON.parse((res.content[0] as { text: string }).text);
+    expect(data.results.length).toBeLessThanOrEqual(2);
+  });
+});
+
+// ── Tool: check_props ─────────────────────────────────────────────────────────
+
+describe("check_props tool", () => {
+  it("validates valid Button props", async () => {
+    const res = await client.callTool({
+      name: "check_props",
+      arguments: {
+        name: "Button",
+        props: { variant: "destructive", size: "sm", children: "Delete" },
+      },
+    });
+    const data = JSON.parse((res.content[0] as { text: string }).text);
+    expect(data.valid).toBe(true);
+    expect(data.errors).toHaveLength(0);
+  });
+
+  it("catches invalid variant value", async () => {
+    const res = await client.callTool({
+      name: "check_props",
+      arguments: {
+        name: "Button",
+        props: { variant: "purple" },
+      },
+    });
+    const data = JSON.parse((res.content[0] as { text: string }).text);
+    expect(data.valid).toBe(false);
+    expect(data.errors[0].prop).toBe("variant");
+  });
+
+  it("catches missing required prop on StatCard", async () => {
+    const res = await client.callTool({
+      name: "check_props",
+      arguments: { name: "StatCard", props: { value: "42" } },
+    });
+    const data = JSON.parse((res.content[0] as { text: string }).text);
+    expect(data.valid).toBe(false);
+    const errorProps = data.errors.map((e: { prop: string }) => e.prop);
+    expect(errorProps).toContain("label");
+  });
+
+  it("returns isError for unknown component", async () => {
+    const res = await client.callTool({
+      name: "check_props",
+      arguments: { name: "FakeWidget", props: {} },
+    });
+    expect(res.isError).toBe(true);
+  });
+});
+
+// ── Tool: preview_component ───────────────────────────────────────────────────
+
+describe("preview_component tool", () => {
+  it("returns preview URL and HTML for Button", async () => {
+    const res = await client.callTool({
+      name: "preview_component",
+      arguments: { name: "Button" },
+    });
+    const data = JSON.parse((res.content[0] as { text: string }).text);
+    expect(data.previewUrl).toContain("iframe.html");
+    expect(data.html).toContain("<iframe");
+    expect(data.resourceUri).toContain("practics-ui://component/button/preview/");
+  });
+
+  it("matches story by variant name", async () => {
+    const res = await client.callTool({
+      name: "preview_component",
+      arguments: { name: "Button", variant: "Loading" },
+    });
+    const data = JSON.parse((res.content[0] as { text: string }).text);
+    expect(data.story).toBe("Loading");
+  });
+
+  it("respects custom height", async () => {
+    const res = await client.callTool({
+      name: "preview_component",
+      arguments: { name: "Dialog", height: 600 },
+    });
+    const data = JSON.parse((res.content[0] as { text: string }).text);
+    expect(data.html).toContain("height: 600px");
+  });
+
+  it("lists all available stories", async () => {
+    const res = await client.callTool({
+      name: "preview_component",
+      arguments: { name: "Alert" },
+    });
+    const data = JSON.parse((res.content[0] as { text: string }).text);
+    expect(data.availableStories.length).toBeGreaterThan(2);
   });
 });
 
