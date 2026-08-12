@@ -24,7 +24,7 @@ beforeAll(async () => {
 // ── Tool: list_components ─────────────────────────────────────────────────────
 
 describe("list_components tool", () => {
-  it("returns all 6 tools in the tools list", async () => {
+  it("returns all 7 tools in the tools list", async () => {
     const { tools } = await client.listTools();
     const names = tools.map((t) => t.name);
     expect(names).toContain("list_components");
@@ -33,6 +33,7 @@ describe("list_components tool", () => {
     expect(names).toContain("search_components");
     expect(names).toContain("check_props");
     expect(names).toContain("preview_component");
+    expect(names).toContain("get_a11y_requirements");
   });
 
   it("lists all 26 components", async () => {
@@ -275,6 +276,155 @@ describe("preview_component tool", () => {
     });
     const data = JSON.parse((res.content[0] as { text: string }).text);
     expect(data.availableStories.length).toBeGreaterThan(2);
+  });
+});
+
+// ── Tool: get_a11y_requirements ───────────────────────────────────────────────
+
+describe("get_a11y_requirements tool", () => {
+  it("returns a11y info for Button", async () => {
+    const res = await client.callTool({
+      name: "get_a11y_requirements",
+      arguments: { name: "Button" },
+    });
+    const data = JSON.parse((res.content[0] as { text: string }).text);
+    expect(data.component).toBe("Button");
+    expect(Array.isArray(data.guarantees)).toBe(true);
+    expect(Array.isArray(data.requirements)).toBe(true);
+    expect(data.requirements.length).toBeGreaterThan(0);
+  });
+
+  it("includes axeReport for Button (has axe tests)", async () => {
+    const res = await client.callTool({
+      name: "get_a11y_requirements",
+      arguments: { name: "Button" },
+    });
+    const data = JSON.parse((res.content[0] as { text: string }).text);
+    expect(data.axeReport).not.toBeNull();
+    expect(data.axeReport.tested).toBe(true);
+    expect(data.axeReport.passed).toBeGreaterThan(0);
+    expect(data.axeReport.summary).toContain("passing");
+  });
+
+  it("returns radixPrimitives for Dialog", async () => {
+    const res = await client.callTool({
+      name: "get_a11y_requirements",
+      arguments: { name: "Dialog" },
+    });
+    const data = JSON.parse((res.content[0] as { text: string }).text);
+    expect(data.radixPrimitives).toContain("@radix-ui/react-dialog");
+  });
+
+  it("returns null axeReport for components without axe tests", async () => {
+    const res = await client.callTool({
+      name: "get_a11y_requirements",
+      arguments: { name: "Dialog" },
+    });
+    const data = JSON.parse((res.content[0] as { text: string }).text);
+    // Dialog has no axe tests yet — axeReport should be null
+    expect(data.axeReport).toBeNull();
+  });
+
+  it("returns isError for unknown component", async () => {
+    const res = await client.callTool({
+      name: "get_a11y_requirements",
+      arguments: { name: "NonExistentWidget" },
+    });
+    expect(res.isError).toBe(true);
+  });
+
+  it("accepts slug input", async () => {
+    const res = await client.callTool({
+      name: "get_a11y_requirements",
+      arguments: { name: "button" },
+    });
+    const data = JSON.parse((res.content[0] as { text: string }).text);
+    expect(data.component).toBe("Button");
+  });
+});
+
+// ── Prompts ───────────────────────────────────────────────────────────────────
+
+describe("prompts", () => {
+  it("lists 3 prompts", async () => {
+    const { prompts } = await client.listPrompts();
+    const names = prompts.map((p) => p.name);
+    expect(names).toContain("scaffold-form");
+    expect(names).toContain("scaffold-data-table");
+    expect(names).toContain("scaffold-dashboard");
+  });
+
+  it("scaffold-form returns a user message with field instructions", async () => {
+    const res = await client.getPrompt({
+      name: "scaffold-form",
+      arguments: { fields: "name:text, email:email, message:textarea" },
+    });
+    expect(res.messages).toHaveLength(1);
+    expect(res.messages[0].role).toBe("user");
+    const text = (res.messages[0].content as { text: string }).text;
+    expect(text).toContain("name (text)");
+    expect(text).toContain("email (email)");
+    expect(text).toContain("message (textarea)");
+    expect(text).toContain("@practics/ui");
+  });
+
+  it("scaffold-form uses custom formName and submitLabel", async () => {
+    const res = await client.getPrompt({
+      name: "scaffold-form",
+      arguments: {
+        fields: "username:text",
+        formName: "LoginForm",
+        submitLabel: "Sign In",
+      },
+    });
+    const text = (res.messages[0].content as { text: string }).text;
+    expect(text).toContain("LoginForm");
+    expect(text).toContain("Sign In");
+  });
+
+  it("scaffold-data-table returns column definitions instructions", async () => {
+    const res = await client.getPrompt({
+      name: "scaffold-data-table",
+      arguments: { columns: "name:string, email:string, role:string", rowType: "User" },
+    });
+    const text = (res.messages[0].content as { text: string }).text;
+    expect(text).toContain("User");
+    expect(text).toContain("name: string");
+    expect(text).toContain("TanStack Table");
+  });
+
+  it("scaffold-data-table includes sorting instructions when requested", async () => {
+    const res = await client.getPrompt({
+      name: "scaffold-data-table",
+      arguments: {
+        columns: "title:string, views:number",
+        features: "sorting,pagination",
+      },
+    });
+    const text = (res.messages[0].content as { text: string }).text;
+    expect(text).toContain("getSortedRowModel");
+    expect(text).toContain("getPaginationRowModel");
+  });
+
+  it("scaffold-dashboard returns layout instructions with chart", async () => {
+    const res = await client.getPrompt({
+      name: "scaffold-dashboard",
+      arguments: { title: "Analytics", chartType: "area" },
+    });
+    const text = (res.messages[0].content as { text: string }).text;
+    expect(text).toContain("Analytics");
+    expect(text).toContain("AreaChart");
+    expect(text).toContain("Sidebar");
+    expect(text).toContain("StatCard");
+  });
+
+  it("scaffold-dashboard with donut chart", async () => {
+    const res = await client.getPrompt({
+      name: "scaffold-dashboard",
+      arguments: { chartType: "donut" },
+    });
+    const text = (res.messages[0].content as { text: string }).text;
+    expect(text).toContain("DonutChart");
   });
 });
 

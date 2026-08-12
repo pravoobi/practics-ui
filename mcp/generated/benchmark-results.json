@@ -1,0 +1,202 @@
+{
+  "runAt": "2026-08-12T08:07:39.220Z",
+  "environment": {
+    "node": "v25.9.0",
+    "platform": "win32"
+  },
+  "latency": [
+    {
+      "tool": "list_components (all)",
+      "args": {},
+      "iterations": 50,
+      "p50ms": 0.29,
+      "p95ms": 0.74,
+      "p99ms": 5.81,
+      "minMs": 0.16,
+      "maxMs": 5.81,
+      "avgTokens": 1845,
+      "avgCostUsd": 0.005535,
+      "costPer1000Usd": 5.535
+    },
+    {
+      "tool": "list_components (filtered)",
+      "args": {
+        "category": "form"
+      },
+      "iterations": 50,
+      "p50ms": 0.18,
+      "p95ms": 0.33,
+      "p99ms": 0.55,
+      "minMs": 0.11,
+      "maxMs": 0.55,
+      "avgTokens": 364,
+      "avgCostUsd": 0.001092,
+      "costPer1000Usd": 1.092
+    },
+    {
+      "tool": "get_component (small)",
+      "args": {
+        "name": "Button"
+      },
+      "iterations": 50,
+      "p50ms": 0.21,
+      "p95ms": 0.49,
+      "p99ms": 0.86,
+      "minMs": 0.14,
+      "maxMs": 0.86,
+      "avgTokens": 1098,
+      "avgCostUsd": 0.003294,
+      "costPer1000Usd": 3.294
+    },
+    {
+      "tool": "get_component (large)",
+      "args": {
+        "name": "Table"
+      },
+      "iterations": 50,
+      "p50ms": 0.16,
+      "p95ms": 0.62,
+      "p99ms": 0.63,
+      "minMs": 0.11,
+      "maxMs": 0.63,
+      "avgTokens": 733,
+      "avgCostUsd": 0.002199,
+      "costPer1000Usd": 2.199
+    },
+    {
+      "tool": "search_components",
+      "args": {
+        "query": "form input"
+      },
+      "iterations": 50,
+      "p50ms": 0.28,
+      "p95ms": 0.97,
+      "p99ms": 13.71,
+      "minMs": 0.17,
+      "maxMs": 13.71,
+      "avgTokens": 323,
+      "avgCostUsd": 0.000969,
+      "costPer1000Usd": 0.969
+    },
+    {
+      "tool": "check_props",
+      "args": {
+        "name": "Button",
+        "props": {
+          "variant": "destructive"
+        }
+      },
+      "iterations": 50,
+      "p50ms": 0.19,
+      "p95ms": 0.57,
+      "p99ms": 1.31,
+      "minMs": 0.14,
+      "maxMs": 1.31,
+      "avgTokens": 90,
+      "avgCostUsd": 0.00027,
+      "costPer1000Usd": 0.27
+    },
+    {
+      "tool": "get_a11y_requirements",
+      "args": {
+        "name": "Button"
+      },
+      "iterations": 50,
+      "p50ms": 0.15,
+      "p95ms": 0.29,
+      "p99ms": 0.92,
+      "minMs": 0.13,
+      "maxMs": 0.92,
+      "avgTokens": 156,
+      "avgCostUsd": 0.000468,
+      "costPer1000Usd": 0.468
+    },
+    {
+      "tool": "preview_component",
+      "args": {
+        "name": "Button"
+      },
+      "iterations": 50,
+      "p50ms": 0.2,
+      "p95ms": 0.5,
+      "p99ms": 0.99,
+      "minMs": 0.13,
+      "maxMs": 0.99,
+      "avgTokens": 456,
+      "avgCostUsd": 0.001368,
+      "costPer1000Usd": 1.368
+    }
+  ],
+  "evals": [
+    {
+      "name": "search 'modal dialog' → Dialog in top 3",
+      "passed": true,
+      "detail": "top 3: [Dialog, ConfirmDialog]"
+    },
+    {
+      "name": "search 'form input field' → Input in top 3",
+      "passed": true,
+      "detail": "top 3: [Input, Textarea, Button]"
+    },
+    {
+      "name": "search 'chart graph' → DonutChart or AreaChart in top 3",
+      "passed": true,
+      "detail": "top 3: [DonutChart, AreaChart]"
+    },
+    {
+      "name": "search 'notification toast alert' → Alert or Toast in top 3",
+      "passed": true,
+      "detail": "top 3: [Toast, Alert]"
+    },
+    {
+      "name": "search 'table data rows' → Table in top 3",
+      "passed": true,
+      "detail": "top 3: [Table, AreaChart, Tabs]"
+    },
+    {
+      "name": "check_props catches invalid Button variant",
+      "passed": true,
+      "detail": "valid=false, errors=[variant]"
+    },
+    {
+      "name": "check_props catches missing required StatCard.label",
+      "passed": true,
+      "detail": "valid=false, errors=[label]"
+    },
+    {
+      "name": "check_props accepts valid Button props",
+      "passed": true,
+      "detail": "valid=true"
+    },
+    {
+      "name": "get_component slug 'button' resolves to Button",
+      "passed": true,
+      "detail": "name=Button"
+    },
+    {
+      "name": "get_component Button has 'variant' and 'size' variants",
+      "passed": true,
+      "detail": "variant props: [variant, size]"
+    },
+    {
+      "name": "get_component Dialog has @radix-ui/react-dialog in a11y",
+      "passed": true,
+      "detail": "radixPrimitives: [@radix-ui/react-dialog]"
+    },
+    {
+      "name": "get_a11y_requirements Button returns axeReport with passed > 0",
+      "passed": true,
+      "detail": "axeReport.passed=3"
+    },
+    {
+      "name": "get_a11y_requirements Button has requirements array",
+      "passed": true,
+      "detail": "requirements.length=2"
+    }
+  ],
+  "summary": {
+    "worstCaseP95Ms": 0.97,
+    "costAllToolsPerSessionUsd": 0.015195,
+    "evalPassRate": "13/13"
+  }
+}

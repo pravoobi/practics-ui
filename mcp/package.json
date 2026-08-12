@@ -1,6 +1,6 @@
 {
   "name": "@practics/ui-mcp",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "MCP server exposing @practics/ui components as tools and resources for AI coding agents",
   "type": "module",
   "main": "./dist/index.js",
@@ -30,11 +30,14 @@
   },
   "scripts": {
     "extract": "tsx scripts/extract.ts",
+    "audit-a11y": "tsx scripts/audit-axe.ts",
+    "extract:full": "npm run audit-a11y && npm run extract",
     "build": "tsc -p tsconfig.json",
-    "prepublishOnly": "npm run extract && npm run build",
+    "prepublishOnly": "npm run extract:full && npm run build",
     "test": "vitest run",
     "test:watch": "vitest",
-    "inspect": "npx @modelcontextprotocol/inspector node dist/index.js"
+    "inspect": "npx @modelcontextprotocol/inspector node dist/index.js",
+    "benchmark": "tsx scripts/benchmark.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.4",

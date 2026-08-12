@@ -1,0 +1,22 @@
+{
+  "generatedAt": "2026-08-12T08:07:12.947Z",
+  "totalAxeTests": 5,
+  "components": {
+    "Button": {
+      "component": "Button",
+      "tested": true,
+      "passed": 3,
+      "failed": 0,
+      "violations": [],
+      "runAt": "2026-08-12T08:07:12.940Z"
+    },
+    "Textarea": {
+      "component": "Textarea",
+      "tested": true,
+      "passed": 2,
+      "failed": 0,
+      "violations": [],
+      "runAt": "2026-08-12T08:07:12.947Z"
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "@practics/ui",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Practics UI component library built with React, Tailwind CSS and Radix UI",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -42,8 +42,11 @@
     "size": "size-limit",
     "lhci": "lhci autorun",
     "mcp:extract": "npm run extract --workspace=@practics/ui-mcp",
+    "mcp:audit-a11y": "npm run audit-a11y --workspace=@practics/ui-mcp",
+    "mcp:extract:full": "npm run extract:full --workspace=@practics/ui-mcp",
     "mcp:build": "npm run build --workspace=@practics/ui-mcp",
-    "mcp:test": "npm run test --workspace=@practics/ui-mcp"
+    "mcp:test": "npm run test --workspace=@practics/ui-mcp",
+    "mcp:benchmark": "npm run benchmark --workspace=@practics/ui-mcp"
   },
   "peerDependencies": {
     "lucide-react": ">=1.0.0",

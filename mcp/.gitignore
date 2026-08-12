@@ -1,2 +1,3 @@
 dist/
 *.tsbuildinfo
+generated/_test-results.json

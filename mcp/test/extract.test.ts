@@ -105,7 +105,7 @@ describe("ComponentsJsonSchema", () => {
   it("accepts a valid minimal components.json", () => {
     const valid = {
       schemaVersion: "1" as const,
-      library: { name: "@practics/ui", version: "0.1.2", publishedAt: new Date().toISOString() },
+      library: { name: "@practics/ui", version: "0.2.0", publishedAt: new Date().toISOString() },
       components: [
         {
           name: "Button",

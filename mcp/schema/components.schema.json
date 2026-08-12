@@ -102,7 +102,17 @@
       "properties": {
         "radixPrimitives": { "type": "array", "items": { "type": "string" } },
         "guarantees": { "type": "array", "items": { "type": "string" } },
-        "requirements": { "type": "array", "items": { "type": "string" } }
+        "requirements": { "type": "array", "items": { "type": "string" } },
+        "axeReport": {
+          "type": "object",
+          "properties": {
+            "tested": { "type": "boolean" },
+            "passed": { "type": "number" },
+            "failed": { "type": "number" },
+            "violations": { "type": "array", "items": { "type": "string" } },
+            "runAt": { "type": "string" }
+          }
+        }
       }
     }
   }

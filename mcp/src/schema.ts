@@ -27,10 +27,20 @@ export const ExampleSchema = z.object({
 });
 export type Example = z.infer<typeof ExampleSchema>;
 
+export const AxeReportSchema = z.object({
+  tested: z.boolean(),
+  passed: z.number(),
+  failed: z.number(),
+  violations: z.array(z.string()),
+  runAt: z.string(),
+}).optional();
+export type AxeReport = z.infer<typeof AxeReportSchema>;
+
 export const A11yInfoSchema = z.object({
   radixPrimitives: z.array(z.string()),
   guarantees: z.array(z.string()),
   requirements: z.array(z.string()),
+  axeReport: AxeReportSchema,
 });
 export type A11yInfo = z.infer<typeof A11yInfoSchema>;
 

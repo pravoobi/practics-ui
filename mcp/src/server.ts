@@ -6,7 +6,9 @@ import { getExample, getExampleInputSchema } from "./tools/get_example.js";
 import { searchComponentsTool, searchComponentsInputSchema } from "./tools/search_components.js";
 import { checkProps, checkPropsInputSchema } from "./tools/check_props.js";
 import { previewComponent, previewComponentInputSchema } from "./tools/preview_component.js";
+import { getA11yRequirements, getA11yRequirementsInputSchema } from "./tools/get_a11y_requirements.js";
 import { renderComponentMarkdown, renderPreviewHtml } from "./resources/component.js";
+import { registerPrompts } from "./prompts.js";
 
 export function createServer(): McpServer {
   const { library } = loadComponents();
@@ -91,6 +93,25 @@ export function createServer(): McpServer {
     checkPropsInputSchema.shape,
     async (args) => {
       const result = checkProps(args as Parameters<typeof checkProps>[0]);
+      const error = typeof result.error === "string" ? result.error : null;
+      if (error) {
+        return { content: [{ type: "text" as const, text: error }], isError: true };
+      }
+      return {
+        content: [{ type: "text" as const, text: JSON.stringify(result, null, 2) }],
+      };
+    }
+  );
+
+  server.tool(
+    "get_a11y_requirements",
+    "Get accessibility requirements and axe audit results for a @practics/ui component. " +
+      "Returns the Radix primitives used (with built-in ARIA), curated caller requirements " +
+      "(e.g. 'always pass aria-label on icon-only buttons'), and live axe test results if available. " +
+      "Call this before generating accessible JSX or when reviewing WCAG compliance.",
+    getA11yRequirementsInputSchema.shape,
+    async (args) => {
+      const result = getA11yRequirements(args as Parameters<typeof getA11yRequirements>[0]);
       const error = typeof result.error === "string" ? result.error : null;
       if (error) {
         return { content: [{ type: "text" as const, text: error }], isError: true };
@@ -200,6 +221,9 @@ export function createServer(): McpServer {
       };
     }
   );
+
+  // ── Prompts ────────────────────────────────────────────────────────────────
+  registerPrompts(server);
 
   return server;
 }

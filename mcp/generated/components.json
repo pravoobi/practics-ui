@@ -2,8 +2,8 @@
   "schemaVersion": "1",
   "library": {
     "name": "@practics/ui",
-    "version": "0.1.2",
-    "publishedAt": "2026-08-12T06:30:40.350Z"
+    "version": "0.2.0",
+    "publishedAt": "2026-08-12T08:07:39.432Z"
   },
   "components": [
     {
@@ -173,7 +173,15 @@
         "requirements": [
           "Provide accessible content: children text OR aria-label when using icon-only sizes.",
           "When size='icon', an aria-label is required."
-        ]
+        ],
+        "axeReport": {
+          "component": "Button",
+          "tested": true,
+          "passed": 3,
+          "failed": 0,
+          "violations": [],
+          "runAt": "2026-08-12T08:07:12.940Z"
+        }
       },
       "peerRequirements": [],
       "source": {
@@ -503,7 +511,15 @@
         ],
         "requirements": [
           "Provide either a label prop or an explicit aria-label."
-        ]
+        ],
+        "axeReport": {
+          "component": "Textarea",
+          "tested": true,
+          "passed": 2,
+          "failed": 0,
+          "violations": [],
+          "runAt": "2026-08-12T08:07:12.947Z"
+        }
       },
       "peerRequirements": [],
       "source": {
