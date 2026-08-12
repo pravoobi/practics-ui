@@ -16,6 +16,9 @@
   "files": [
     "dist"
   ],
+  "sideEffects": [
+    "./dist/styles/globals.css"
+  ],
   "keywords": [
     "react",
     "ui",

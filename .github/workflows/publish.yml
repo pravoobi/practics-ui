@@ -6,6 +6,8 @@ on:
       - master
     paths:
       - "package.json"
+      - "mcp/package.json"
+  workflow_dispatch:
 
 jobs:
   publish:
