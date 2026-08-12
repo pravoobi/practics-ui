@@ -570,22 +570,36 @@ async function main() {
     });
   }
 
+  const outDir = join(MCP_ROOT, "generated");
+  mkdirSync(outDir, { recursive: true });
+  const outPath = join(outDir, "components.json");
+
+  // Preserve publishedAt when re-extracting the same version — makes the output
+  // deterministic across runs so CI's stale-check doesn't false-positive.
+  let publishedAt = new Date().toISOString();
+  if (existsSync(outPath)) {
+    try {
+      const existing = JSON.parse(readFileSync(outPath, "utf8")) as { library?: { version?: string; publishedAt?: string } };
+      if (existing.library?.version === libPkg.version && existing.library.publishedAt) {
+        publishedAt = existing.library.publishedAt;
+      }
+    } catch {
+      // ignore — fall back to now
+    }
+  }
+
   const output = {
     schemaVersion: "1" as const,
     library: {
       name: libPkg.name,
       version: libPkg.version,
-      publishedAt: new Date().toISOString(),
+      publishedAt,
     },
     components,
   };
 
   // Validate against zod schema before writing
   ComponentsJsonSchema.parse(output);
-
-  const outDir = join(MCP_ROOT, "generated");
-  mkdirSync(outDir, { recursive: true });
-  const outPath = join(outDir, "components.json");
   writeFileSync(outPath, JSON.stringify(output, null, 2) + "\n");
 
   console.log(`\nWrote ${outPath}`);
