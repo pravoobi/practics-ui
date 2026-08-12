@@ -1,0 +1,512 @@
+{
+  "schemaVersion": "1",
+  "library": {
+    "name": "@practics/ui",
+    "version": "0.1.2",
+    "publishedAt": "2026-08-11T12:21:47.895Z"
+  },
+  "components": [
+    {
+      "name": "Button",
+      "slug": "button",
+      "description": "Clickable button with icon slots and a loading state. Wraps a shadcn base with CVA variants.",
+      "category": "form",
+      "props": [
+        {
+          "name": "ref",
+          "type": "Ref<HTMLButtonElement>",
+          "required": false,
+          "description": "React 19 ref — pass directly, no forwardRef needed."
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "iconLeft",
+          "type": "ReactElement",
+          "required": false
+        },
+        {
+          "name": "iconRight",
+          "type": "ReactElement",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "prop": "variant",
+          "values": [
+            "default",
+            "destructive",
+            "outline",
+            "secondary",
+            "ghost",
+            "link"
+          ]
+        },
+        {
+          "prop": "size",
+          "values": [
+            "default",
+            "sm",
+            "lg",
+            "icon"
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "name": "Default",
+          "storyId": "components-button--default",
+          "propsJson": {
+            "children": "Button"
+          },
+          "jsx": "<Button>Button</Button>"
+        },
+        {
+          "name": "Destructive",
+          "storyId": "components-button--destructive",
+          "propsJson": {
+            "children": "Delete",
+            "variant": "destructive"
+          },
+          "jsx": "<Button variant=\"destructive\">Delete</Button>"
+        },
+        {
+          "name": "Outline",
+          "storyId": "components-button--outline",
+          "propsJson": {
+            "children": "Outline",
+            "variant": "outline"
+          },
+          "jsx": "<Button variant=\"outline\">Outline</Button>"
+        },
+        {
+          "name": "Secondary",
+          "storyId": "components-button--secondary",
+          "propsJson": {
+            "children": "Secondary",
+            "variant": "secondary"
+          },
+          "jsx": "<Button variant=\"secondary\">Secondary</Button>"
+        },
+        {
+          "name": "Ghost",
+          "storyId": "components-button--ghost",
+          "propsJson": {
+            "children": "Ghost",
+            "variant": "ghost"
+          },
+          "jsx": "<Button variant=\"ghost\">Ghost</Button>"
+        },
+        {
+          "name": "Link",
+          "storyId": "components-button--link",
+          "propsJson": {
+            "children": "Link",
+            "variant": "link"
+          },
+          "jsx": "<Button variant=\"link\">Link</Button>"
+        },
+        {
+          "name": "Small",
+          "storyId": "components-button--small",
+          "propsJson": {
+            "children": "Small",
+            "size": "sm"
+          },
+          "jsx": "<Button size=\"sm\">Small</Button>"
+        },
+        {
+          "name": "Large",
+          "storyId": "components-button--large",
+          "propsJson": {
+            "children": "Large",
+            "size": "lg"
+          },
+          "jsx": "<Button size=\"lg\">Large</Button>"
+        },
+        {
+          "name": "Loading",
+          "storyId": "components-button--loading",
+          "propsJson": {
+            "children": "Loading",
+            "loading": "true"
+          },
+          "jsx": "<Button loading={true}>Loading</Button>"
+        },
+        {
+          "name": "WithIconLeft",
+          "storyId": "components-button--with-icon-left",
+          "propsJson": {
+            "children": "Send"
+          },
+          "jsx": "<Button iconLeft={<Mail />}>Send</Button>"
+        },
+        {
+          "name": "WithIconRight",
+          "storyId": "components-button--with-icon-right",
+          "propsJson": {
+            "children": "Next"
+          },
+          "jsx": "<Button iconRight={<ArrowRight />}>Next</Button>"
+        },
+        {
+          "name": "Disabled",
+          "storyId": "components-button--disabled",
+          "propsJson": {
+            "children": "Disabled",
+            "disabled": "true"
+          },
+          "jsx": "<Button disabled={true}>Disabled</Button>"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [],
+        "guarantees": [
+          "Uses a native <button> element by default (asChild swaps the render element).",
+          "Icons rendered inside are marked aria-hidden.",
+          "loading=true sets aria-busy and disables interaction."
+        ],
+        "requirements": [
+          "Provide accessible content: children text OR aria-label when using icon-only sizes.",
+          "When size='icon', an aria-label is required."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/Button/Button.tsx"
+      },
+      "storybook": {
+        "titlePath": "Components/Button",
+        "stories": [
+          {
+            "key": "Default",
+            "id": "components-button--default"
+          },
+          {
+            "key": "Destructive",
+            "id": "components-button--destructive"
+          },
+          {
+            "key": "Outline",
+            "id": "components-button--outline"
+          },
+          {
+            "key": "Secondary",
+            "id": "components-button--secondary"
+          },
+          {
+            "key": "Ghost",
+            "id": "components-button--ghost"
+          },
+          {
+            "key": "Link",
+            "id": "components-button--link"
+          },
+          {
+            "key": "Small",
+            "id": "components-button--small"
+          },
+          {
+            "key": "Large",
+            "id": "components-button--large"
+          },
+          {
+            "key": "Loading",
+            "id": "components-button--loading"
+          },
+          {
+            "key": "WithIconLeft",
+            "id": "components-button--with-icon-left"
+          },
+          {
+            "key": "WithIconRight",
+            "id": "components-button--with-icon-right"
+          },
+          {
+            "key": "Disabled",
+            "id": "components-button--disabled"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Input",
+      "slug": "input",
+      "description": "Labeled text input with optional icons, helper text and error message. Wires aria-describedby and aria-invalid automatically.",
+      "category": "form",
+      "props": [
+        {
+          "name": "ref",
+          "type": "Ref<HTMLInputElement>",
+          "required": false,
+          "description": "React 19 ref — pass directly, no forwardRef needed."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "error",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "helperText",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "iconLeft",
+          "type": "ReactElement",
+          "required": false
+        },
+        {
+          "name": "iconRight",
+          "type": "ReactElement",
+          "required": false
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Default",
+          "storyId": "components-input--default",
+          "propsJson": {
+            "label": "Email",
+            "placeholder": "Enter your email"
+          },
+          "jsx": "<Input label=\"Email\" placeholder=\"Enter your email\" />"
+        },
+        {
+          "name": "WithHelperText",
+          "storyId": "components-input--with-helper-text",
+          "propsJson": {
+            "label": "Email",
+            "placeholder": "Enter your email",
+            "helperText": "We'll never share your email."
+          },
+          "jsx": "<Input label=\"Email\" placeholder=\"Enter your email\" helperText=\"We'll never share your email.\", />"
+        },
+        {
+          "name": "WithError",
+          "storyId": "components-input--with-error",
+          "propsJson": {
+            "label": "Email",
+            "placeholder": "Enter your email",
+            "error": "Email is required."
+          },
+          "jsx": "<Input label=\"Email\" placeholder=\"Enter your email\" error=\"Email is required.\", />"
+        },
+        {
+          "name": "WithIconLeft",
+          "storyId": "components-input--with-icon-left",
+          "propsJson": {
+            "label": "Email",
+            "placeholder": "Enter your email"
+          },
+          "jsx": "<Input label=\"Email\" placeholder=\"Enter your email\" iconLeft={<Mail />,} />"
+        },
+        {
+          "name": "WithIconRight",
+          "storyId": "components-input--with-icon-right",
+          "propsJson": {
+            "label": "Search",
+            "placeholder": "Search..."
+          },
+          "jsx": "<Input label=\"Search\" placeholder=\"Search...\" iconRight={<Search />,} />"
+        },
+        {
+          "name": "Disabled",
+          "storyId": "components-input--disabled",
+          "propsJson": {
+            "label": "Email",
+            "placeholder": "Enter your email",
+            "disabled": "true"
+          },
+          "jsx": "<Input label=\"Email\" placeholder=\"Enter your email\" disabled={true,} />"
+        },
+        {
+          "name": "Password",
+          "storyId": "components-input--password",
+          "propsJson": {
+            "label": "Password",
+            "placeholder": "Enter your password",
+            "type": "password"
+          },
+          "jsx": "<Input label=\"Password\" placeholder=\"Enter your password\" type=\"password\", />"
+        },
+        {
+          "name": "NoLabel",
+          "storyId": "components-input--no-label",
+          "propsJson": {
+            "placeholder": "Search...",
+            "\"aria-label\"": "Search"
+          },
+          "jsx": "<Input placeholder=\"Search...\" aria-label=\"Search\" />"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [],
+        "guarantees": [
+          "Label is associated with input via htmlFor/id.",
+          "Helper text and error text are linked via aria-describedby.",
+          "aria-invalid is set when error is present.",
+          "Decorative icons are marked aria-hidden."
+        ],
+        "requirements": [
+          "Provide either a label prop or an explicit aria-label.",
+          "Prefer error text over placeholder for validation messages."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/Input/Input.tsx"
+      },
+      "storybook": {
+        "titlePath": "Components/Input",
+        "stories": [
+          {
+            "key": "Default",
+            "id": "components-input--default"
+          },
+          {
+            "key": "WithHelperText",
+            "id": "components-input--with-helper-text"
+          },
+          {
+            "key": "WithError",
+            "id": "components-input--with-error"
+          },
+          {
+            "key": "WithIconLeft",
+            "id": "components-input--with-icon-left"
+          },
+          {
+            "key": "WithIconRight",
+            "id": "components-input--with-icon-right"
+          },
+          {
+            "key": "Disabled",
+            "id": "components-input--disabled"
+          },
+          {
+            "key": "Password",
+            "id": "components-input--password"
+          },
+          {
+            "key": "NoLabel",
+            "id": "components-input--no-label"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Dialog",
+      "slug": "dialog",
+      "description": "Modal dialog primitive composed of Root, Trigger, Content, Header, Footer, Title, Description, and Close. Supports controlled and uncontrolled modes.",
+      "category": "overlay",
+      "props": [
+        {
+          "name": "ref",
+          "type": "Ref<HTMLDivElement>",
+          "required": false,
+          "description": "React 19 ref — pass directly, no forwardRef needed."
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "onOpenChange",
+          "type": "(open: boolean) => void",
+          "required": false
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false
+        }
+      ],
+      "variants": [],
+      "examples": [
+        {
+          "name": "Default",
+          "storyId": "components-dialog--default",
+          "jsx": "<Dialog>\r\n        <DialogTrigger asChild>\r\n          <Button>Open Dialog</Button>\r\n        </DialogTrigger>\r\n        <DialogContent>\r\n          <DialogHeader>\r\n            <DialogTitle>Dialog Title</DialogTitle>\r\n            <DialogDescription>\r\n              This is a dialog description. It provides context about the dialog.\r\n            </DialogDescription>\r\n          </DialogHeader>\r\n          <p className=\"text-sm text-muted-foreground\">Dialog body content goes here.</p>\r\n          <DialogFooter>\r\n            <DialogClose asChild>\r\n              <Button variant=\"outline\">Cancel</Button>\r\n            </DialogClose>\r\n            <Button>Confirm</Button>\r\n          </DialogFooter>\r\n        </DialogContent>\r\n      </Dialog>"
+        },
+        {
+          "name": "Confirmation",
+          "storyId": "components-dialog--confirmation",
+          "jsx": "<Dialog>\r\n        <DialogTrigger asChild>\r\n          <Button variant=\"destructive\">Delete Item</Button>\r\n        </DialogTrigger>\r\n        <DialogContent>\r\n          <DialogHeader>\r\n            <DialogTitle>Are you sure?</DialogTitle>\r\n            <DialogDescription>\r\n              This action cannot be undone. This will permanently delete the item.\r\n            </DialogDescription>\r\n          </DialogHeader>\r\n          <DialogFooter>\r\n            <DialogClose asChild>\r\n              <Button variant=\"outline\">Cancel</Button>\r\n            </DialogClose>\r\n            <Button variant=\"destructive\">Delete</Button>\r\n          </DialogFooter>\r\n        </DialogContent>\r\n      </Dialog>"
+        },
+        {
+          "name": "WithForm",
+          "storyId": "components-dialog--with-form",
+          "jsx": "<Dialog>\r\n        <DialogTrigger asChild>\r\n          <Button>Edit Profile</Button>\r\n        </DialogTrigger>\r\n        <DialogContent>\r\n          <DialogHeader>\r\n            <DialogTitle>Edit Profile</DialogTitle>\r\n            <DialogDescription>\r\n              Make changes to your profile here.\r\n            </DialogDescription>\r\n          </DialogHeader>\r\n          <div className=\"flex flex-col gap-4 py-4\">\r\n            <input\r\n              className=\"border border-border rounded px-3 py-2 text-sm w-full\"\r\n              placeholder=\"Name\"\r\n            />\r\n            <input\r\n              className=\"border border-border rounded px-3 py-2 text-sm w-full\"\r\n              placeholder=\"Email\"\r\n            />\r\n          </div>\r\n          <DialogFooter>\r\n            <DialogClose asChild>\r\n      \n  {/* ... */}"
+        },
+        {
+          "name": "Controlled",
+          "storyId": "components-dialog--controlled",
+          "jsx": "{\r\n      const [open, setOpen] = React.useState(false);\r\n      return (\r\n        <>\r\n          <Button onClick={() => setOpen(true)}>Open Controlled</Button>\r\n          <Dialog open={open} onOpenChange={setOpen}>\r\n            <DialogContent>\r\n              <DialogHeader>\r\n                <DialogTitle>Controlled Dialog</DialogTitle>\r\n                <DialogDescription>\r\n                  This dialog is controlled externally via state.\r\n                </DialogDescription>\r\n              </DialogHeader>\r\n              <DialogFooter>\r\n                <Button onClick={() => setOpen(false)}>Close</Button>\r\n              </DialogFooter>\r\n            </DialogContent>\r\n          </Dialog>\r\n        </>\r\n      );\r\n    }"
+        }
+      ],
+      "a11y": {
+        "radixPrimitives": [
+          "@radix-ui/react-dialog"
+        ],
+        "guarantees": [
+          "Focus is trapped inside the dialog while open.",
+          "Escape key closes the dialog.",
+          "Body scroll is locked while the dialog is open.",
+          "role='dialog' and aria-modal='true' set by Radix.",
+          "Focus returns to the trigger on close."
+        ],
+        "requirements": [
+          "DialogContent must contain a DialogTitle (Radix requirement; violates a11y otherwise).",
+          "Provide a DialogDescription or explicit aria-describedby on DialogContent.",
+          "Use DialogTrigger asChild when wrapping a custom button."
+        ]
+      },
+      "peerRequirements": [],
+      "source": {
+        "path": "src/components/Dialog/Dialog.tsx"
+      },
+      "storybook": {
+        "titlePath": "Components/Dialog",
+        "stories": [
+          {
+            "key": "Default",
+            "id": "components-dialog--default"
+          },
+          {
+            "key": "Confirmation",
+            "id": "components-dialog--confirmation"
+          },
+          {
+            "key": "WithForm",
+            "id": "components-dialog--with-form"
+          },
+          {
+            "key": "Controlled",
+            "id": "components-dialog--controlled"
+          }
+        ]
+      },
+      "subcomponents": [
+        "DialogTrigger",
+        "DialogClose",
+        "DialogContent",
+        "DialogHeader",
+        "DialogFooter",
+        "DialogTitle",
+        "DialogDescription"
+      ]
+    }
+  ]
+}

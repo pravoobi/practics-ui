@@ -1,0 +1,109 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://practics-ui.dev/schemas/components.schema.json",
+  "title": "PracticsUiComponentsJson",
+  "type": "object",
+  "required": ["schemaVersion", "library", "components"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": "1" },
+    "library": {
+      "type": "object",
+      "required": ["name", "version", "publishedAt"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" },
+        "publishedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "components": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/component" }
+    }
+  },
+  "definitions": {
+    "component": {
+      "type": "object",
+      "required": [
+        "name", "slug", "description", "category", "props", "variants",
+        "examples", "a11y", "peerRequirements", "source", "storybook"
+      ],
+      "properties": {
+        "name": { "type": "string" },
+        "slug": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string" },
+        "props": { "type": "array", "items": { "$ref": "#/definitions/prop" } },
+        "variants": { "type": "array", "items": { "$ref": "#/definitions/variant" } },
+        "examples": { "type": "array", "items": { "$ref": "#/definitions/example" } },
+        "a11y": { "$ref": "#/definitions/a11y" },
+        "peerRequirements": { "type": "array", "items": { "type": "string" } },
+        "source": {
+          "type": "object",
+          "required": ["path"],
+          "properties": { "path": { "type": "string" } }
+        },
+        "storybook": {
+          "type": "object",
+          "required": ["titlePath", "stories"],
+          "properties": {
+            "titlePath": { "type": "string" },
+            "stories": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["key", "id"],
+                "properties": {
+                  "key": { "type": "string" },
+                  "id": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "subcomponents": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "prop": {
+      "type": "object",
+      "required": ["name", "type", "required"],
+      "properties": {
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "required": { "type": "boolean" },
+        "default": { "type": "string" },
+        "description": { "type": "string" },
+        "deprecated": { "type": "string" }
+      }
+    },
+    "variant": {
+      "type": "object",
+      "required": ["prop", "values"],
+      "properties": {
+        "prop": { "type": "string" },
+        "values": { "type": "array", "items": { "type": "string" } },
+        "default": { "type": "string" }
+      }
+    },
+    "example": {
+      "type": "object",
+      "required": ["name", "storyId", "jsx"],
+      "properties": {
+        "name": { "type": "string" },
+        "storyId": { "type": "string" },
+        "propsJson": { "type": "object" },
+        "jsx": { "type": "string" }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "required": ["radixPrimitives", "guarantees", "requirements"],
+      "properties": {
+        "radixPrimitives": { "type": "array", "items": { "type": "string" } },
+        "guarantees": { "type": "array", "items": { "type": "string" } },
+        "requirements": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

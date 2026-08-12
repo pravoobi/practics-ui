@@ -1,0 +1,50 @@
+{
+  "name": "@practics/ui-mcp",
+  "version": "0.1.2",
+  "description": "MCP server exposing @practics/ui components as tools and resources for AI coding agents",
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": {
+    "practics-ui-mcp": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "generated/components.json",
+    "schema/components.schema.json",
+    "README.md"
+  ],
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "claude-code",
+    "ui",
+    "react",
+    "practics-ui",
+    "ai-tools"
+  ],
+  "author": "pravoobi",
+  "license": "ISC",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "extract": "tsx scripts/extract.ts",
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run extract && npm run build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "inspect": "npx @modelcontextprotocol/inspector node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "react-docgen-typescript": "^2.2.2",
+    "ts-morph": "^24.0.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.6"
+  }
+}

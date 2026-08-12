@@ -25,6 +25,12 @@
   ],
   "author": "pravoobi",
   "license": "ISC",
+  "workspaces": [
+    "mcp"
+  ],
+  "overrides": {
+    "zod": "^4.0.0"
+  },
   "scripts": {
     "build:lib": "tsc -p tsconfig.build.json && vite build",
     "typecheck": "tsc --noEmit",
@@ -34,7 +40,10 @@
     "dev": "storybook dev -p 6006",
     "build:storybook": "storybook build",
     "size": "size-limit",
-    "lhci": "lhci autorun"
+    "lhci": "lhci autorun",
+    "mcp:extract": "npm run extract --workspace=@practics/ui-mcp",
+    "mcp:build": "npm run build --workspace=@practics/ui-mcp",
+    "mcp:test": "npm run test --workspace=@practics/ui-mcp"
   },
   "peerDependencies": {
     "lucide-react": ">=1.0.0",

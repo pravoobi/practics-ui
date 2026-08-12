@@ -1,13 +1,19 @@
 name: Publish to npm
+
 on:
   push:
     branches:
       - master
     paths:
       - "package.json"
+
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write   # required for npm provenance
+
     steps:
       - uses: actions/checkout@v4
 
@@ -19,13 +25,54 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
-      - name: Run tests
+      # ── Assert version parity between @practics/ui and @practics/ui-mcp ──────
+      - name: Check version parity
+        run: |
+          LIB_VERSION=$(node -p "require('./package.json').version")
+          MCP_VERSION=$(node -p "require('./mcp/package.json').version")
+          if [ "$LIB_VERSION" != "$MCP_VERSION" ]; then
+            echo "❌ Version mismatch: @practics/ui=$LIB_VERSION, @practics/ui-mcp=$MCP_VERSION"
+            echo "Both packages must share the same version before publishing."
+            exit 1
+          fi
+          echo "✓ Version parity: $LIB_VERSION"
+
+      # ── Test both packages ────────────────────────────────────────────────────
+      - name: Run library tests
         run: npm run test:run
 
-      - name: Build
+      - name: Run MCP tests (unit only — extract runs in next step)
+        run: cd mcp && npx vitest run test/extract.test.ts
+
+      # ── Build + extract ───────────────────────────────────────────────────────
+      - name: Build library
         run: npm run build:lib
 
-      - name: Publish to npm
-        run: npm publish --access public
+      - name: Generate components.json
+        run: npm run mcp:extract
+
+      - name: Verify components.json is up to date
+        run: |
+          if ! git diff --exit-code mcp/generated/components.json; then
+            echo "❌ mcp/generated/components.json is stale — commit the regenerated file."
+            exit 1
+          fi
+
+      - name: Build MCP server
+        run: npm run mcp:build
+
+      # ── Run MCP integration tests (after build + extract) ────────────────────
+      - name: Run MCP integration tests
+        run: npm run mcp:test
+
+      # ── Publish @practics/ui ──────────────────────────────────────────────────
+      - name: Publish @practics/ui to npm
+        run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # ── Publish @practics/ui-mcp ──────────────────────────────────────────────
+      - name: Publish @practics/ui-mcp to npm
+        run: cd mcp && npm publish --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
