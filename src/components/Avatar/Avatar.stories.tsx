@@ -5,6 +5,12 @@ import type { Meta, StoryObj } from "@storybook/react";
     title: "Components/Avatar",
     component: Avatar,
     tags: ["autodocs"],
+    argTypes: {
+      size: {
+        control: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
+    },
   };
 
   export default meta;

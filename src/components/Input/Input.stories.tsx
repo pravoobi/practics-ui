@@ -6,6 +6,12 @@ import type { Meta, StoryObj } from "@storybook/react";
     title: "Components/Input",
     component: Input,
     tags: ["autodocs"],
+    argTypes: {
+      type: {
+        control: "select",
+        options: ["text", "password", "email", "number", "tel", "url", "search"],
+      },
+    },
   };
 
   export default meta;

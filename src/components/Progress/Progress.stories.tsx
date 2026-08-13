@@ -5,6 +5,16 @@ import type { Meta, StoryObj } from "@storybook/react";
     title: "Components/Progress",
     component: Progress,
     tags: ["autodocs"],
+    argTypes: {
+      variant: {
+        control: "select",
+        options: ["default", "success", "warning", "destructive"],
+      },
+      size: {
+        control: "select",
+        options: ["sm", "md", "lg"],
+      },
+    },
   };
 
   export default meta;

@@ -279,7 +279,20 @@
           "required": false
         }
       ],
-      "variants": [],
+      "variants": [
+        {
+          "prop": "type",
+          "values": [
+            "text",
+            "password",
+            "email",
+            "number",
+            "tel",
+            "url",
+            "search"
+          ]
+        }
+      ],
       "examples": [
         {
           "name": "Default",
@@ -2055,7 +2068,18 @@
           "description": "All standard HTML div element attributes are accepted."
         }
       ],
-      "variants": [],
+      "variants": [
+        {
+          "prop": "variant",
+          "values": [
+            "default",
+            "info",
+            "success",
+            "warning",
+            "destructive"
+          ]
+        }
+      ],
       "examples": [
         {
           "name": "Default",
@@ -2295,7 +2319,25 @@
           "description": "All standard HTML div element attributes are accepted."
         }
       ],
-      "variants": [],
+      "variants": [
+        {
+          "prop": "variant",
+          "values": [
+            "default",
+            "success",
+            "warning",
+            "destructive"
+          ]
+        },
+        {
+          "prop": "size",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ]
+        }
+      ],
       "examples": [
         {
           "name": "Default",
@@ -2605,7 +2647,19 @@
           "description": "All standard HTML div element attributes are accepted."
         }
       ],
-      "variants": [],
+      "variants": [
+        {
+          "prop": "variant",
+          "values": [
+            "default",
+            "secondary",
+            "destructive",
+            "outline",
+            "success",
+            "warning"
+          ]
+        }
+      ],
       "examples": [
         {
           "name": "Default",
@@ -2736,7 +2790,18 @@
           "description": "All standard HTML span element attributes are accepted."
         }
       ],
-      "variants": [],
+      "variants": [
+        {
+          "prop": "size",
+          "values": [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ]
+        }
+      ],
       "examples": [
         {
           "name": "WithImage",

@@ -5,6 +5,12 @@ import type { Meta, StoryObj } from "@storybook/react";
     title: "Components/Alert",
     component: Alert,
     tags: ["autodocs"],
+    argTypes: {
+      variant: {
+        control: "select",
+        options: ["default", "info", "success", "warning", "destructive"],
+      },
+    },
   };
 
   export default meta;
