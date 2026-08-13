@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "practics-ui": {
+      "command": "node",
+      "args": ["mcp/dist/index.js"]
+    }
+  }
+}
